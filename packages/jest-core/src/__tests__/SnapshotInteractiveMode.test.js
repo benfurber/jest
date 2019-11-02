@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {KEYS} from 'jest-watcher';
 import SnapshotInteractiveMode from '../SnapshotInteractiveMode';
 
@@ -26,8 +26,8 @@ jest
     };
   });
 
-jest.doMock('chalk', () =>
-  Object.assign(new chalk.constructor({enabled: false}), {
+jest.doMock('terminalStyles', () =>
+  Object.assign(new terminalStyles.constructor({enabled: false}), {
     stripColor: str => str,
   }),
 );

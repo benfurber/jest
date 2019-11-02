@@ -8,8 +8,8 @@
 import assert = require('assert');
 import {Console} from 'console';
 import {format} from 'util';
-import chalk from 'chalk';
 import {SourceMapRegistry, getCallsite} from '@jest/source-map';
+import {terminalStyles} from 'jest-config';
 import {
   ConsoleBuffer,
   LogCounters,
@@ -110,7 +110,7 @@ export default class BufferedConsole extends Console {
     this._groupDepth++;
 
     if (title || rest.length > 0) {
-      this._log('group', chalk.bold(format(title, ...rest)));
+      this._log('group', terminalStyles.bold(format(title, ...rest)));
     }
   }
 
@@ -118,7 +118,7 @@ export default class BufferedConsole extends Console {
     this._groupDepth++;
 
     if (title || rest.length > 0) {
-      this._log('groupCollapsed', chalk.bold(format(title, ...rest)));
+      this._log('groupCollapsed', terminalStyles.bold(format(title, ...rest)));
     }
   }
 

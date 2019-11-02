@@ -6,17 +6,19 @@
  */
 
 import path from 'path';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import stripAnsi from 'strip-ansi';
 import {printDisplayName, trimAndFormatPath, wrapAnsiString} from '../utils';
 
 describe('wrapAnsiString()', () => {
   it('wraps a long string containing ansi chars', () => {
     const string =
-      `abcde ${chalk.red.bold('red-bold')} 1234456` +
-      `${chalk.dim('bcd')} ` +
+      `abcde ${terminalStyles.red.bold('red-bold')} 1234456` +
+      `${terminalStyles.dim('bcd')} ` +
       `123ttttttththththththththththththththththththththth` +
-      `tetetetetettetetetetetetetete${chalk.underline.bold('stnhsnthsnth')}` +
+      `tetetetetettetetetetetetetete${terminalStyles.underline.bold(
+        'stnhsnthsnth',
+      )}` +
       `ssot`;
     expect(wrapAnsiString(string, 10)).toMatchSnapshot();
     expect(stripAnsi(wrapAnsiString(string, 10))).toMatchSnapshot();

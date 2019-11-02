@@ -9,7 +9,7 @@ import * as path from 'path';
 import {Config} from '@jest/types';
 import {ModuleMap} from 'jest-haste-map'; // eslint-disable-line import/no-extraneous-dependencies
 import {sync as realpath} from 'realpath-native';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import nodeModulesPaths from './nodeModulesPaths';
 import isBuiltinModule from './isBuiltinModule';
 import defaultResolver, {clearDefaultResolverCache} from './defaultResolver';
@@ -418,17 +418,17 @@ const createNoMappedModuleFoundError = (
   resolver?: Function | string | null,
 ) => {
   const error = new Error(
-    chalk.red(`${chalk.bold('Configuration error')}:
+    terminalStyles.red(`${terminalStyles.bold('Configuration error')}:
 
-Could not locate module ${chalk.bold(moduleName)} mapped as:
-${chalk.bold(updatedName)}.
+Could not locate module ${terminalStyles.bold(moduleName)} mapped as:
+${terminalStyles.bold(updatedName)}.
 
 Please check your configuration for these entries:
 {
   "moduleNameMapper": {
-    "${regex.toString()}": "${chalk.bold(mappedModuleName)}"
+    "${regex.toString()}": "${terminalStyles.bold(mappedModuleName)}"
   },
-  "resolver": ${chalk.bold(String(resolver))}
+  "resolver": ${terminalStyles.bold(String(resolver))}
 }`),
   );
 

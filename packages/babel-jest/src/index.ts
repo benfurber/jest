@@ -16,7 +16,7 @@ import {
   transformSync as babelTransform,
   loadPartialConfig,
 } from '@babel/core';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import slash = require('slash');
 
 const THIS_FILE = fs.readFileSync(__filename);
@@ -52,9 +52,9 @@ const createTransformer = (
 
     if (!babelConfig) {
       throw new Error(
-        `babel-jest: Babel ignores ${chalk.bold(
+        `babel-jest: Babel ignores ${terminalStyles.bold(
           slash(path.relative(cwd, filename)),
-        )} - make sure to include the file in Jest's ${chalk.bold(
+        )} - make sure to include the file in Jest's ${terminalStyles.bold(
           'transformIgnorePatterns',
         )} as well.`,
       );

@@ -6,7 +6,7 @@
  */
 
 import {Writable} from 'stream';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import CustomConsole from '../CustomConsole';
 
 describe('CustomConsole', () => {
@@ -141,9 +141,9 @@ describe('CustomConsole', () => {
       _console.group('second');
       _console.log('there');
 
-      expect(_stdout).toEqual(`  ${chalk.bold('first')}
+      expect(_stdout).toEqual(`  ${terminalStyles.bold('first')}
   hey
-    ${chalk.bold('second')}
+    ${terminalStyles.bold('second')}
     there
 `);
     });

@@ -8,7 +8,7 @@
 import {Config} from '@jest/types';
 import {ChangedFilesPromise, getChangedFilesForRoots} from 'jest-changed-files';
 import {formatExecError} from 'jest-message-util';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 
 export default (
   globalConfig: Config.GlobalConfig,
@@ -29,7 +29,7 @@ export default (
         .filter(line => !line.includes('Command failed:'))
         .join('\n');
 
-      console.error(chalk.red(`\n\n${message}`));
+      console.error(terminalStyles.red(`\n\n${message}`));
 
       process.exit(1);
 

@@ -6,7 +6,7 @@
  *
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import prettyFormat = require('pretty-format');
 import {alignedAnsiStyleSerializer} from '@jest/test-utils';
 import {
@@ -322,19 +322,19 @@ describe('matcherHint', () => {
       {expectedColor, secondArgument: '...expected'},
     );
 
-    const substringNegative = chalk.green(expectedArgument);
+    const substringNegative = terminalStyles.green(expectedArgument);
 
     expect(received).not.toMatch(substringNegative);
   });
 
   test('receivedColor', () => {
-    const receivedColor = chalk.cyan.bgAnsi256(158);
+    const receivedColor = terminalStyles.cyan.bgAnsi256(158);
     const receivedArgument = 'received';
     const received = matcherHint('toMatchSnapshot', receivedArgument, '', {
       receivedColor,
     });
 
-    const substringNegative = chalk.red(receivedArgument);
+    const substringNegative = terminalStyles.red(receivedArgument);
     const substringPositive = receivedColor(receivedArgument);
 
     expect(received).not.toMatch(substringNegative);
@@ -342,14 +342,14 @@ describe('matcherHint', () => {
   });
 
   test('secondArgumentColor', () => {
-    const secondArgumentColor = chalk.bold;
+    const secondArgumentColor = terminalStyles.bold;
     const secondArgument = 'hint';
     const received = matcherHint('toMatchSnapshot', undefined, 'properties', {
       secondArgument,
       secondArgumentColor,
     });
 
-    const substringNegative = chalk.green(secondArgument);
+    const substringNegative = terminalStyles.green(secondArgument);
     const substringPositive = secondArgumentColor(secondArgument);
 
     expect(received).not.toMatch(substringNegative);

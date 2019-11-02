@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import terminalStyles from './terminalStylings';
 import prettyFormat = require('pretty-format');
 
 const format = (value: unknown) => prettyFormat(value, {min: true});
 
 export default {
-  mapCoverage: () => `  Option ${chalk.bold(
+  mapCoverage: () => `  Option ${terminalStyles.bold(
     '"mapCoverage"',
   )} has been removed, as it's no longer necessary.
 
@@ -19,15 +19,15 @@ export default {
 
   preprocessorIgnorePatterns: (options: {
     preprocessorIgnorePatterns: Array<string>;
-  }) => `  Option ${chalk.bold(
+  }) => `  Option ${terminalStyles.bold(
     '"preprocessorIgnorePatterns"',
-  )} was replaced by ${chalk.bold(
+  )} was replaced by ${terminalStyles.bold(
     '"transformIgnorePatterns"',
   )}, which support multiple preprocessors.
 
   Jest now treats your current configuration as:
   {
-    ${chalk.bold('"transformIgnorePatterns"')}: ${chalk.bold(
+    ${terminalStyles.bold('"transformIgnorePatterns"')}: ${terminalStyles.bold(
     format(options.preprocessorIgnorePatterns),
   )}
   }
@@ -36,15 +36,15 @@ export default {
 
   scriptPreprocessor: (options: {
     scriptPreprocessor: string;
-  }) => `  Option ${chalk.bold(
+  }) => `  Option ${terminalStyles.bold(
     '"scriptPreprocessor"',
-  )} was replaced by ${chalk.bold(
+  )} was replaced by ${terminalStyles.bold(
     '"transform"',
   )}, which support multiple preprocessors.
 
   Jest now treats your current configuration as:
   {
-    ${chalk.bold('"transform"')}: ${chalk.bold(
+    ${terminalStyles.bold('"transform"')}: ${terminalStyles.bold(
     `{".*": ${format(options.scriptPreprocessor)}}`,
   )}
   }
@@ -53,9 +53,9 @@ export default {
 
   setupTestFrameworkScriptFile: (_options: {
     setupTestFrameworkScriptFile: Array<string>;
-  }) => `  Option ${chalk.bold(
+  }) => `  Option ${terminalStyles.bold(
     '"setupTestFrameworkScriptFile"',
-  )} was replaced by configuration ${chalk.bold(
+  )} was replaced by configuration ${terminalStyles.bold(
     '"setupFilesAfterEnv"',
   )}, which supports multiple paths.
 
@@ -63,13 +63,15 @@ export default {
 
   testPathDirs: (options: {
     testPathDirs: Array<string>;
-  }) => `  Option ${chalk.bold('"testPathDirs"')} was replaced by ${chalk.bold(
-    '"roots"',
-  )}.
+  }) => `  Option ${terminalStyles.bold(
+    '"testPathDirs"',
+  )} was replaced by ${terminalStyles.bold('"roots"')}.
 
   Jest now treats your current configuration as:
   {
-    ${chalk.bold('"roots"')}: ${chalk.bold(format(options.testPathDirs))}
+    ${terminalStyles.bold('"roots"')}: ${terminalStyles.bold(
+    format(options.testPathDirs),
+  )}
   }
 
   Please update your configuration.

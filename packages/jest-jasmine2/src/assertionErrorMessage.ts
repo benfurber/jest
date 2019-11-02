@@ -11,7 +11,7 @@ import {
   printExpected,
   printReceived,
 } from 'jest-matcher-utils';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {AssertionErrorWithStack} from './types';
 
 const assertOperatorsMap: Record<string, string> = {
@@ -56,10 +56,10 @@ const operatorMessage = (operator: string | null) => {
 
 const assertThrowingMatcherHint = (operatorName: string) =>
   operatorName
-    ? chalk.dim('assert') +
-      chalk.dim('.' + operatorName + '(') +
-      chalk.red('function') +
-      chalk.dim(')')
+    ? terminalStyles.dim('assert') +
+      terminalStyles.dim('.' + operatorName + '(') +
+      terminalStyles.red('function') +
+      terminalStyles.dim(')')
     : '';
 
 const assertMatcherHint = (
@@ -71,18 +71,18 @@ const assertMatcherHint = (
 
   if (operator === '==' && expected === true) {
     message =
-      chalk.dim('assert') +
-      chalk.dim('(') +
-      chalk.red('received') +
-      chalk.dim(')');
+      terminalStyles.dim('assert') +
+      terminalStyles.dim('(') +
+      terminalStyles.red('received') +
+      terminalStyles.dim(')');
   } else if (operatorName) {
     message =
-      chalk.dim('assert') +
-      chalk.dim('.' + operatorName + '(') +
-      chalk.red('received') +
-      chalk.dim(', ') +
-      chalk.green('expected') +
-      chalk.dim(')');
+      terminalStyles.dim('assert') +
+      terminalStyles.dim('.' + operatorName + '(') +
+      terminalStyles.red('received') +
+      terminalStyles.dim(', ') +
+      terminalStyles.green('expected') +
+      terminalStyles.dim(')');
   }
 
   return message;
@@ -103,10 +103,12 @@ function assertionErrorMessage(
   if (operatorName === 'doesNotThrow') {
     return (
       buildHintString(assertThrowingMatcherHint(operatorName)) +
-      chalk.reset(`Expected the function not to throw an error.\n`) +
-      chalk.reset(`Instead, it threw:\n`) +
+      terminalStyles.reset(`Expected the function not to throw an error.\n`) +
+      terminalStyles.reset(`Instead, it threw:\n`) +
       `  ${printReceived(actual)}` +
-      chalk.reset(hasCustomMessage ? '\n\nMessage:\n  ' + message : '') +
+      terminalStyles.reset(
+        hasCustomMessage ? '\n\nMessage:\n  ' + message : '',
+      ) +
       trimmedStack
     );
   }
@@ -114,20 +116,22 @@ function assertionErrorMessage(
   if (operatorName === 'throws') {
     return (
       buildHintString(assertThrowingMatcherHint(operatorName)) +
-      chalk.reset(`Expected the function to throw an error.\n`) +
-      chalk.reset(`But it didn't throw anything.`) +
-      chalk.reset(hasCustomMessage ? '\n\nMessage:\n  ' + message : '') +
+      terminalStyles.reset(`Expected the function to throw an error.\n`) +
+      terminalStyles.reset(`But it didn't throw anything.`) +
+      terminalStyles.reset(
+        hasCustomMessage ? '\n\nMessage:\n  ' + message : '',
+      ) +
       trimmedStack
     );
   }
 
   return (
     buildHintString(assertMatcherHint(operator, operatorName, expected)) +
-    chalk.reset(`Expected value ${operatorMessage(operator)}`) +
+    terminalStyles.reset(`Expected value ${operatorMessage(operator)}`) +
     `  ${printExpected(expected)}\n` +
-    chalk.reset(`Received:\n`) +
+    terminalStyles.reset(`Received:\n`) +
     `  ${printReceived(actual)}` +
-    chalk.reset(hasCustomMessage ? '\n\nMessage:\n  ' + message : '') +
+    terminalStyles.reset(hasCustomMessage ? '\n\nMessage:\n  ' + message : '') +
     (diffString ? `\n\nDifference:\n\n${diffString}` : '') +
     trimmedStack
   );

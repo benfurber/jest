@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import ansiEscapes = require('ansi-escapes');
 import {AggregatedResult, AssertionLocation} from '@jest/test-result';
 import {KEYS} from 'jest-watcher';
@@ -48,38 +48,41 @@ export default class SnapshotInteractiveMode {
     const numPass = this._countPaths - this._testAssertions.length;
     const numRemaining = this._countPaths - numPass - this._skippedNum;
 
-    let stats = chalk.bold.dim(
+    let stats = terminalStyles.bold.dim(
       pluralize('snapshot', numRemaining) + ' remaining',
     );
     if (numPass) {
       stats +=
-        ', ' + chalk.bold.green(pluralize('snapshot', numPass) + ' updated');
+        ', ' +
+        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
     }
     if (this._skippedNum) {
       stats +=
         ', ' +
-        chalk.bold.yellow(pluralize('snapshot', this._skippedNum) + ' skipped');
+        terminalStyles.bold.yellow(
+          pluralize('snapshot', this._skippedNum) + ' skipped',
+        );
     }
     const messages = [
-      '\n' + chalk.bold('Interactive Snapshot Progress'),
+      '\n' + terminalStyles.bold('Interactive Snapshot Progress'),
       ARROW + stats,
-      '\n' + chalk.bold('Watch Usage'),
+      '\n' + terminalStyles.bold('Watch Usage'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'u' +
-        chalk.dim(' to update failing snapshots for this test.'),
+        terminalStyles.dim(' to update failing snapshots for this test.'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         's' +
-        chalk.dim(' to skip the current test.'),
+        terminalStyles.dim(' to skip the current test.'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'q' +
-        chalk.dim(' to quit Interactive Snapshot Mode.'),
+        terminalStyles.dim(' to quit Interactive Snapshot Mode.'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'Enter' +
-        chalk.dim(' to trigger a test run.'),
+        terminalStyles.dim(' to trigger a test run.'),
     ];
 
     this._pipe.write(messages.filter(Boolean).join('\n') + '\n');
@@ -89,30 +92,33 @@ export default class SnapshotInteractiveMode {
     this._pipe.write(CLEAR);
     const numPass = this._countPaths - this._testAssertions.length;
 
-    let stats = chalk.bold.dim(
+    let stats = terminalStyles.bold.dim(
       pluralize('snapshot', this._countPaths) + ' reviewed',
     );
     if (numPass) {
       stats +=
-        ', ' + chalk.bold.green(pluralize('snapshot', numPass) + ' updated');
+        ', ' +
+        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
     }
     if (this._skippedNum) {
       stats +=
         ', ' +
-        chalk.bold.yellow(pluralize('snapshot', this._skippedNum) + ' skipped');
+        terminalStyles.bold.yellow(
+          pluralize('snapshot', this._skippedNum) + ' skipped',
+        );
     }
     const messages = [
-      '\n' + chalk.bold('Interactive Snapshot Result'),
+      '\n' + terminalStyles.bold('Interactive Snapshot Result'),
       ARROW + stats,
-      '\n' + chalk.bold('Watch Usage'),
+      '\n' + terminalStyles.bold('Watch Usage'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'r' +
-        chalk.dim(' to restart Interactive Snapshot Mode.'),
+        terminalStyles.dim(' to restart Interactive Snapshot Mode.'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'q' +
-        chalk.dim(' to quit Interactive Snapshot Mode.'),
+        terminalStyles.dim(' to quit Interactive Snapshot Mode.'),
     ];
 
     this._pipe.write(messages.filter(Boolean).join('\n') + '\n');
@@ -122,21 +128,22 @@ export default class SnapshotInteractiveMode {
     this._pipe.write(CLEAR);
     const numPass = this._countPaths - this._testAssertions.length;
 
-    let stats = chalk.bold.dim(
+    let stats = terminalStyles.bold.dim(
       pluralize('snapshot', this._countPaths) + ' reviewed',
     );
     if (numPass) {
       stats +=
-        ', ' + chalk.bold.green(pluralize('snapshot', numPass) + ' updated');
+        ', ' +
+        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
     }
     const messages = [
-      '\n' + chalk.bold('Interactive Snapshot Result'),
+      '\n' + terminalStyles.bold('Interactive Snapshot Result'),
       ARROW + stats,
-      '\n' + chalk.bold('Watch Usage'),
+      '\n' + terminalStyles.bold('Watch Usage'),
 
-      chalk.dim(ARROW + 'Press ') +
+      terminalStyles.dim(ARROW + 'Press ') +
         'Enter' +
-        chalk.dim(' to return to watch mode.'),
+        terminalStyles.dim(' to return to watch mode.'),
     ];
 
     this._pipe.write(messages.filter(Boolean).join('\n') + '\n');

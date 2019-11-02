@@ -10,9 +10,8 @@ import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
 import {clearLine} from 'jest-util';
 import {validateCLIOptions} from 'jest-validate';
-import {deprecationEntries} from 'jest-config';
+import {deprecationEntries, terminalStyles} from 'jest-config';
 import {getVersion, runCLI} from '@jest/core';
-import chalk from 'chalk';
 import exit = require('exit');
 import yargs = require('yargs');
 import {sync as realpath} from 'realpath-native';
@@ -36,9 +35,9 @@ export async function run(maybeArgv?: Array<string>, project?: Config.Path) {
     clearLine(process.stderr);
     clearLine(process.stdout);
     if (error.stack) {
-      console.error(chalk.red(error.stack));
+      console.error(terminalStyles.red(error.stack));
     } else {
-      console.error(chalk.red(error));
+      console.error(terminalStyles.red(error));
     }
 
     exit(1);
@@ -124,7 +123,7 @@ const readResultsAndExit = (
   if (globalConfig.forceExit) {
     if (!globalConfig.detectOpenHandles) {
       console.warn(
-        chalk.bold('Force exiting Jest: ') +
+        terminalStyles.bold('Force exiting Jest: ') +
           'Have you considered using `--detectOpenHandles` to detect ' +
           'async operations that kept running after all tests finished?',
       );
@@ -134,10 +133,10 @@ const readResultsAndExit = (
   } else if (!globalConfig.detectOpenHandles) {
     setTimeout(() => {
       console.warn(
-        chalk.yellow.bold(
+        terminalStyles.yellow.bold(
           'Jest did not exit one second after the test run has completed.\n\n',
         ) +
-          chalk.yellow(
+          terminalStyles.yellow(
             'This usually means that there are asynchronous operations that ' +
               "weren't stopped in your tests. Consider running Jest with " +
               '`--detectOpenHandles` to troubleshoot this issue.',

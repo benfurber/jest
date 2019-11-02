@@ -8,7 +8,7 @@
 
 'use strict';
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import TestWatcher from '../TestWatcher';
 import {JestHook, KEYS} from 'jest-watcher';
 
@@ -42,7 +42,10 @@ jest.mock(
     },
 );
 
-jest.doMock('chalk', () => new chalk.constructor({enabled: false}));
+jest.doMock(
+  'terminalStyles',
+  () => new terminalStyles.constructor({enabled: false}),
+);
 jest.doMock(
   '../runJest',
   () =>

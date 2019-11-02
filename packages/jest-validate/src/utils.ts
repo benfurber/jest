@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
 import prettyFormat = require('pretty-format');
 import leven from 'leven';
 
-const BULLET: string = chalk.bold('\u25cf');
+import {terminalStyles} from 'jest-config';
+
+const BULLET: string = terminalStyles.bold('\u25cf');
 export const DEPRECATION = `${BULLET} Deprecation Warning`;
 export const ERROR = `${BULLET} Validation Error`;
 export const WARNING = `${BULLET} Validation Warning`;
@@ -34,7 +35,9 @@ export class ValidationError extends Error {
     super();
     comment = comment ? '\n\n' + comment : '\n';
     this.name = '';
-    this.message = chalk.red(chalk.bold(name) + ':\n\n' + message + comment);
+    this.message = terminalStyles.red(
+      terminalStyles.bold(name) + ':\n\n' + message + comment,
+    );
     Error.captureStackTrace(this, () => {});
   }
 }
@@ -45,7 +48,11 @@ export const logValidationWarning = (
   comment?: string | null,
 ) => {
   comment = comment ? '\n\n' + comment : '\n';
-  console.warn(chalk.yellow(chalk.bold(name) + ':\n\n' + message + comment));
+  console.warn(
+    terminalStyles.yellow(
+      terminalStyles.bold(name) + ':\n\n' + message + comment,
+    ),
+  );
 };
 
 export const createDidYouMeanMessage = (
@@ -57,5 +64,7 @@ export const createDidYouMeanMessage = (
     return steps < 3;
   });
 
-  return suggestion ? `Did you mean ${chalk.bold(format(suggestion))}?` : '';
+  return suggestion
+    ? `Did you mean ${terminalStyles.bold(format(suggestion))}?`
+    : '';
 };

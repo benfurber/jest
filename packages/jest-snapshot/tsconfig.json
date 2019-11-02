@@ -6,6 +6,7 @@
   },
   "references": [
     {"path": "../expect"},
+    {"path": "../jest-config"},
     {"path": "../jest-diff"},
     {"path": "../jest-get-type"},
     {"path": "../jest-haste-map"},

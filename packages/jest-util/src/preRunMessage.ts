@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import clearLine from './clearLine';
 import isInteractive from './isInteractive';
 
 export const print = (stream: NodeJS.WriteStream) => {
   if (isInteractive) {
-    stream.write(chalk.bold.dim('Determining test suites to run...'));
+    stream.write(terminalStyles.bold.dim('Determining test suites to run...'));
   }
 };
 

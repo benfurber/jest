@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import {Config} from '@jest/types';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 
 export type SnapshotResolver = {
   testPathForConsistencyCheck: string;
@@ -94,7 +94,7 @@ function createCustomSnapshotResolver(
 
 function mustImplement(propName: string, requiredType: string) {
   return (
-    chalk.bold(
+    terminalStyles.bold(
       `Custom snapshot resolver must implement a \`${propName}\` as a ${requiredType}.`,
     ) +
     '\nDocumentation: https://facebook.github.io/jest/docs/en/configuration.html#snapshotResolver'
@@ -108,7 +108,7 @@ function verifyConsistentTransformations(custom: SnapshotResolver) {
   const resolvedTestPath = custom.resolveTestPath(resolvedSnapshotPath);
   if (resolvedTestPath !== custom.testPathForConsistencyCheck) {
     throw new Error(
-      chalk.bold(
+      terminalStyles.bold(
         `Custom snapshot resolver functions must transform paths consistently, i.e. expects resolveTestPath(resolveSnapshotPath('${custom.testPathForConsistencyCheck}')) === ${resolvedTestPath}`,
       ),
     );

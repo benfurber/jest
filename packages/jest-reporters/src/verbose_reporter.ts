@@ -12,7 +12,7 @@ import {
   Suite,
   TestResult,
 } from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {specialChars} from 'jest-util';
 import {Test} from './types';
 import DefaultReporter from './default_reporter';
@@ -95,20 +95,23 @@ export default class VerboseReporter extends DefaultReporter {
 
   private _getIcon(status: string) {
     if (status === 'failed') {
-      return chalk.red(ICONS.failed);
+      return terminalStyles.red(ICONS.failed);
     } else if (status === 'pending') {
-      return chalk.yellow(ICONS.pending);
+      return terminalStyles.yellow(ICONS.pending);
     } else if (status === 'todo') {
-      return chalk.magenta(ICONS.todo);
+      return terminalStyles.magenta(ICONS.todo);
     } else {
-      return chalk.green(ICONS.success);
+      return terminalStyles.green(ICONS.success);
     }
   }
 
   private _logTest(test: AssertionResult, indentLevel: number) {
     const status = this._getIcon(test.status);
     const time = test.duration ? ` (${test.duration.toFixed(0)}ms)` : '';
-    this._logLine(status + ' ' + chalk.dim(test.title + time), indentLevel);
+    this._logLine(
+      status + ' ' + terminalStyles.dim(test.title + time),
+      indentLevel,
+    );
   }
 
   private _logTests(tests: Array<AssertionResult>, indentLevel: number) {
@@ -148,7 +151,7 @@ export default class VerboseReporter extends DefaultReporter {
       const printedTestStatus =
         test.status === 'pending' ? 'skipped' : test.status;
       const icon = this._getIcon(test.status);
-      const text = chalk.dim(`${printedTestStatus} ${test.title}`);
+      const text = terminalStyles.dim(`${printedTestStatus} ${test.title}`);
       this._logLine(`${icon} ${text}`, indentLevel);
     };
   }

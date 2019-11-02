@@ -9,7 +9,7 @@ import {Config} from '@jest/types';
 import {AggregatedResult, TestResult} from '@jest/test-result';
 import {clearLine, isInteractive} from 'jest-util';
 import {getConsoleOutput} from '@jest/console';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {ReporterOnStartOptions, Test} from './types';
 import BaseReporter from './base_reporter';
 import Status from './Status';
@@ -19,7 +19,7 @@ import getSnapshotStatus from './get_snapshot_status';
 type write = (chunk: string, enc?: any, cb?: () => void) => boolean;
 type FlushBufferedOutput = () => void;
 
-const TITLE_BULLET = chalk.bold('\u25cf ');
+const TITLE_BULLET = terminalStyles.bold('\u25cf ');
 
 export default class DefaultReporter extends BaseReporter {
   private _clear: string; // ANSI clear sequence for the last printed status

@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {AggregatedResult, SnapshotSummary} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {testPathPatternToRegExp} from 'jest-util';
 import {Context, ReporterOnStartOptions} from './types';
 import BaseReporter from './base_reporter';
@@ -109,7 +109,7 @@ export default class SummaryReporter extends BaseReporter {
           message +=
             '\n' +
             (wasInterrupted
-              ? chalk.bold.red('Test run was interrupted.')
+              ? terminalStyles.bold.red('Test run was interrupted.')
               : this._getTestSummary(contexts, this._globalConfig));
         }
         this.log(message);
@@ -174,7 +174,7 @@ export default class SummaryReporter extends BaseReporter {
       failedTests + runtimeErrors > 0 &&
       aggregatedResults.numTotalTestSuites > TEST_SUMMARY_THRESHOLD
     ) {
-      this.log(chalk.bold('Summary of all failing tests'));
+      this.log(terminalStyles.bold('Summary of all failing tests'));
       aggregatedResults.testResults.forEach(testResult => {
         const {failureMessage} = testResult;
         if (failureMessage) {
@@ -200,7 +200,7 @@ export default class SummaryReporter extends BaseReporter {
         : ' matching ';
 
       return (
-        chalk.dim(prefix) +
+        terminalStyles.dim(prefix) +
         testPathPatternToRegExp(globalConfig.testPathPattern).toString()
       );
     };
@@ -208,9 +208,9 @@ export default class SummaryReporter extends BaseReporter {
     let testInfo = '';
 
     if (globalConfig.runTestsByPath) {
-      testInfo = chalk.dim(' within paths');
+      testInfo = terminalStyles.dim(' within paths');
     } else if (globalConfig.onlyChanged) {
-      testInfo = chalk.dim(' related to changed files');
+      testInfo = terminalStyles.dim(' related to changed files');
     } else if (globalConfig.testPathPattern) {
       testInfo = getMatchingTestsInfo();
     }
@@ -221,21 +221,23 @@ export default class SummaryReporter extends BaseReporter {
       nameInfo = ' ' + globalConfig.nonFlagArgs.map(p => `"${p}"`).join(', ');
     } else if (globalConfig.testNamePattern) {
       nameInfo =
-        chalk.dim(' with tests matching ') +
+        terminalStyles.dim(' with tests matching ') +
         `"${globalConfig.testNamePattern}"`;
     }
 
     const contextInfo =
       contexts.size > 1
-        ? chalk.dim(' in ') + contexts.size + chalk.dim(' projects')
+        ? terminalStyles.dim(' in ') +
+          contexts.size +
+          terminalStyles.dim(' projects')
         : '';
 
     return (
-      chalk.dim('Ran all test suites') +
+      terminalStyles.dim('Ran all test suites') +
       testInfo +
       nameInfo +
       contextInfo +
-      chalk.dim('.')
+      terminalStyles.dim('.')
     );
   }
 }

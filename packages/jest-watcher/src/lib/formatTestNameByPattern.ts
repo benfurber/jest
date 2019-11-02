@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 
 import colorize from './colorize';
 
@@ -20,13 +20,13 @@ export default (testName: string, pattern: string, width: number) => {
   try {
     regexp = new RegExp(pattern, 'i');
   } catch (e) {
-    return chalk.dim(inlineTestName);
+    return terminalStyles.dim(inlineTestName);
   }
 
   const match = inlineTestName.match(regexp);
 
   if (!match) {
-    return chalk.dim(inlineTestName);
+    return terminalStyles.dim(inlineTestName);
   }
 
   const startPatternIndex = Math.max(match.index || 0, 0);
@@ -54,5 +54,5 @@ export default (testName: string, pattern: string, width: number) => {
     }
   }
 
-  return `${chalk.dim(slicedTestName)}${chalk.reset(DOTS)}`;
+  return `${terminalStyles.dim(slicedTestName)}${terminalStyles.reset(DOTS)}`;
 };

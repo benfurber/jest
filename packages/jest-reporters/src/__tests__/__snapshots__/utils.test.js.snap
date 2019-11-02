@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`printDisplayName should correctly print the displayName when color and name are valid values 1`] = `"</><inverse><green> hello </></></>"`;
+exports[`printDisplayName should correctly print the displayName when color and name are valid values 1`] = `"hello"`;
 
-exports[`printDisplayName should default displayName color to white when color is not a valid value 1`] = `"</><inverse><white> hello </></></>"`;
+exports[`printDisplayName should default displayName color to white when color is not a valid value 1`] = `"hello"`;
 
-exports[`printDisplayName should default displayName color to white when displayName is a string 1`] = `"</><inverse><white> hello </></></>"`;
+exports[`printDisplayName should default displayName color to white when displayName is a string 1`] = `"hello"`;
 
 exports[`trimAndFormatPath() does not trim anything 1`] = `"<dim>1234567890/1234567890/</><bold>1234.js</>"`;
 

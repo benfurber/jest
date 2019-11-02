@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {Config} from '@jest/types';
 import {TestRunData} from './types';
 import pluralize from './pluralize';
@@ -25,17 +25,17 @@ export default function getNoTestFound(
       .map(p => `"${p}"`)
       .join(', ')}`;
   } else {
-    dataMessage = `Pattern: ${chalk.yellow(
+    dataMessage = `Pattern: ${terminalStyles.yellow(
       globalConfig.testPathPattern,
     )} - 0 matches`;
   }
 
   return (
-    chalk.bold('No tests found, exiting with code 1') +
+    terminalStyles.bold('No tests found, exiting with code 1') +
     '\n' +
     'Run with `--passWithNoTests` to exit with code 0' +
     '\n' +
-    `In ${chalk.bold(globalConfig.rootDir)}` +
+    `In ${terminalStyles.bold(globalConfig.rootDir)}` +
     '\n' +
     `  ${pluralize('file', testFiles, 's')} checked across ${pluralize(
       'project',

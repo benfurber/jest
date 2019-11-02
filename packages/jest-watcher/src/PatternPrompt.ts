@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import ansiEscapes = require('ansi-escapes');
 import {specialChars} from 'jest-util';
 import Prompt from './lib/Prompt';
@@ -14,10 +14,12 @@ import {ScrollOptions} from './types';
 const {CLEAR} = specialChars;
 
 const usage = (entity: string) =>
-  `\n${chalk.bold('Pattern Mode Usage')}\n` +
-  ` ${chalk.dim('\u203A Press')} Esc ${chalk.dim('to exit pattern mode.')}\n` +
-  ` ${chalk.dim('\u203A Press')} Enter ` +
-  `${chalk.dim(`to filter by a ${entity} regex pattern.`)}\n` +
+  `\n${terminalStyles.bold('Pattern Mode Usage')}\n` +
+  ` ${terminalStyles.dim('\u203A Press')} Esc ${terminalStyles.dim(
+    'to exit pattern mode.',
+  )}\n` +
+  ` ${terminalStyles.dim('\u203A Press')} Enter ` +
+  `${terminalStyles.dim(`to filter by a ${entity} regex pattern.`)}\n` +
   `\n`;
 
 const usageRows = usage('').split('\n').length;

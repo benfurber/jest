@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import getType = require('jest-get-type');
 import {ERROR, ValidationError, formatPrettyObject} from './utils';
 import {getValues} from './condition';
@@ -23,12 +23,12 @@ export const errorMessage = (
     new Set(conditions.map(getType)),
   );
 
-  const message = `  Option ${chalk.bold(
+  const message = `  Option ${terminalStyles.bold(
     `"${path && path.length > 0 ? path.join('.') + '.' : ''}${option}"`,
   )} must be of type:
-    ${validTypes.map(e => chalk.bold.green(e)).join(' or ')}
+    ${validTypes.map(e => terminalStyles.bold.green(e)).join(' or ')}
   but instead received:
-    ${chalk.bold.red(getType(received))}
+    ${terminalStyles.bold.red(getType(received))}
 
   Example:
 ${formatExamples(option, conditions)}`;
@@ -42,7 +42,9 @@ ${formatExamples(option, conditions)}`;
 function formatExamples(option: string, examples: Array<any>) {
   return examples.map(
     e => `  {
-    ${chalk.bold(`"${option}"`)}: ${chalk.bold(formatPrettyObject(e))}
+    ${terminalStyles.bold(`"${option}"`)}: ${terminalStyles.bold(
+      formatPrettyObject(e),
+    )}
   }`,
   ).join(`
 

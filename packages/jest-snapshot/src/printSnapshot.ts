@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {
   DIFF_DELETE,
   DIFF_EQUAL,
@@ -149,8 +149,8 @@ export const printDiffOrStringified = (
     aColor,
     bAnnotation,
     bColor,
-    changeLineTrailingSpaceColor: chalk.bgYellow,
-    commonLineTrailingSpaceColor: chalk.bgYellow,
+    changeLineTrailingSpaceColor: terminalStyles.bgYellow,
+    commonLineTrailingSpaceColor: terminalStyles.bgYellow,
     emptyFirstOrLastLinePlaceholder: '↵', // U+21B5
     expand,
     includeChangeCounts: true,

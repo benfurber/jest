@@ -7,22 +7,22 @@
 
 import {Config} from '@jest/types';
 import {TestResult} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {formatTestPath, printDisplayName} from './utils';
 import terminalLink = require('terminal-link');
 
-const LONG_TEST_COLOR = chalk.reset.bold.bgRed;
+const LONG_TEST_COLOR = terminalStyles.reset.bold.bgRed;
 // Explicitly reset for these messages since they can get written out in the
 // middle of error logging
 const FAIL_TEXT = 'FAIL';
 const PASS_TEXT = 'PASS';
 
-const FAIL = chalk.supportsColor
-  ? chalk.reset.inverse.bold.red(` ${FAIL_TEXT} `)
+const FAIL = terminalStyles.supportsColor
+  ? terminalStyles.reset.inverse.bold.red(` ${FAIL_TEXT} `)
   : FAIL_TEXT;
 
-const PASS = chalk.supportsColor
-  ? chalk.reset.inverse.bold.green(` ${PASS_TEXT} `)
+const PASS = terminalStyles.supportsColor
+  ? terminalStyles.reset.inverse.bold.green(` ${PASS_TEXT} `)
   : PASS_TEXT;
 
 export default (

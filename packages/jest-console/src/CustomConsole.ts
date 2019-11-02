@@ -8,7 +8,7 @@
 import assert = require('assert');
 import {format} from 'util';
 import {Console} from 'console';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {clearLine} from 'jest-util';
 import {LogCounters, LogMessage, LogTimers, LogType} from './types';
 
@@ -90,7 +90,7 @@ export default class CustomConsole extends Console {
     this._groupDepth++;
 
     if (title || args.length > 0) {
-      this._log('group', chalk.bold(format(title, ...args)));
+      this._log('group', terminalStyles.bold(format(title, ...args)));
     }
   }
 
@@ -98,7 +98,7 @@ export default class CustomConsole extends Console {
     this._groupDepth++;
 
     if (title || args.length > 0) {
-      this._log('groupCollapsed', chalk.bold(format(title, ...args)));
+      this._log('groupCollapsed', terminalStyles.bold(format(title, ...args)));
     }
   }
 

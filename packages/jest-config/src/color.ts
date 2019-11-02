@@ -6,9 +6,9 @@
  */
 
 import {createHash} from 'crypto';
-import chalk from 'chalk';
+import terminalStyles from './terminalStylings';
 
-const colors: Array<keyof typeof chalk> = [
+const colors: Array<keyof typeof terminalStyles> = [
   'red',
   'green',
   'yellow',

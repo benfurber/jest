@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {formatExecError} from 'jest-message-util';
 import {Config} from '@jest/types';
 import snapshot = require('jest-snapshot');
@@ -105,7 +105,7 @@ export default class TestScheduler {
       // Throws when the context is leaked after executing a test.
       if (testResult.leaks) {
         const message =
-          chalk.red.bold('EXPERIMENTAL FEATURE!\n') +
+          terminalStyles.red.bold('EXPERIMENTAL FEATURE!\n') +
           'Your test suite is leaking memory. Please ensure all references are cleaned.\n' +
           '\n' +
           'There is a number of things that can leak memory:\n' +

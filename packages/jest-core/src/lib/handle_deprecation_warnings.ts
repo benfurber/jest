@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import {KEYS} from 'jest-watcher';
 
 export default (
@@ -15,9 +15,13 @@ export default (
   new Promise((resolve, reject) => {
     if (typeof stdin.setRawMode === 'function') {
       const messages = [
-        chalk.red('There are deprecation warnings.\n'),
-        chalk.dim(' \u203A Press ') + 'Enter' + chalk.dim(' to continue.'),
-        chalk.dim(' \u203A Press ') + 'Esc' + chalk.dim(' to exit.'),
+        terminalStyles.red('There are deprecation warnings.\n'),
+        terminalStyles.dim(' \u203A Press ') +
+          'Enter' +
+          terminalStyles.dim(' to continue.'),
+        terminalStyles.dim(' \u203A Press ') +
+          'Esc' +
+          terminalStyles.dim(' to exit.'),
       ];
 
       pipe.write(messages.join('\n'));

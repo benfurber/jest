@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {ValidationError} from 'jest-validate';
-import chalk from 'chalk';
+import terminalStyles from './terminalStylings';
 import getType = require('jest-get-type');
 import {BULLET, DOCUMENTATION_NOTE} from './utils';
 
@@ -28,9 +28,9 @@ export function createReporterError(
 ) {
   const errorMessage =
     `  Reporter at index ${reporterIndex} must be of type:\n` +
-    `    ${chalk.bold.green(validReporterTypes.join(' or '))}\n` +
+    `    ${terminalStyles.bold.green(validReporterTypes.join(' or '))}\n` +
     `  but instead received:\n` +
-    `    ${chalk.bold.red(getType(reporterValue))}`;
+    `    ${terminalStyles.bold.red(getType(reporterValue))}`;
 
   return new ValidationError(ERROR, errorMessage, DOCUMENTATION_NOTE);
 }
@@ -47,11 +47,11 @@ export function createArrayReporterError(
     `  Unexpected value for ${valueName} ` +
     `at index ${valueIndex} of reporter at index ${reporterIndex}\n` +
     '  Expected:\n' +
-    `    ${chalk.bold.red(expectedType)}\n` +
+    `    ${terminalStyles.bold.red(expectedType)}\n` +
     '  Got:\n' +
-    `    ${chalk.bold.green(getType(value))}\n` +
+    `    ${terminalStyles.bold.green(getType(value))}\n` +
     `  Reporter configuration:\n` +
-    `    ${chalk.bold.green(
+    `    ${terminalStyles.bold.green(
       JSON.stringify(arrayReporter, null, 2)
         .split('\n')
         .join('\n    '),

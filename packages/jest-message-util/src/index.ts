@@ -9,7 +9,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {Config} from '@jest/types';
 import {AssertionResult, SerializableError} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 import micromatch = require('micromatch');
 import slash = require('slash');
 import {codeFrameColumns} from '@babel/code-frame';
@@ -55,8 +55,8 @@ const TITLE_INDENT = '  ';
 const MESSAGE_INDENT = '    ';
 const STACK_INDENT = '      ';
 const ANCESTRY_SEPARATOR = ' \u203A ';
-const TITLE_BULLET = chalk.bold('\u25cf ');
-const STACK_TRACE_COLOR = chalk.dim;
+const TITLE_BULLET = terminalStyles.bold('\u25cf ');
+const STACK_TRACE_COLOR = terminalStyles.dim;
 const STACK_PATH_REGEXP = /\s*at.*\(?(\:\d*\:\d*|native)\)?/;
 const EXEC_ERROR_MESSAGE = 'Test suite failed to run';
 const NOT_EMPTY_LINE_REGEXP = /^(?!$)/gm;
@@ -219,7 +219,7 @@ const formatPaths = (
       micromatch([filePath], config.testMatch).length > 0) ||
     filePath === relativeTestPath
   ) {
-    filePath = chalk.reset.cyan(filePath);
+    filePath = terminalStyles.reset.cyan(filePath);
   }
   return STACK_TRACE_COLOR(match[1]) + filePath + STACK_TRACE_COLOR(match[3]);
 };
@@ -320,7 +320,7 @@ export const formatResultsErrors = (
       message = indentAllLines(message, MESSAGE_INDENT);
 
       const title =
-        chalk.bold.red(
+        terminalStyles.bold.red(
           TITLE_INDENT +
             TITLE_BULLET +
             result.ancestorTitles.join(ANCESTRY_SEPARATOR) +

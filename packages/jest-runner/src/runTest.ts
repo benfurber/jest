@@ -22,11 +22,10 @@ import * as fs from 'graceful-fs';
 import {ErrorWithStack, interopRequireDefault, setGlobal} from 'jest-util';
 import LeakDetector from 'jest-leak-detector';
 import Resolver = require('jest-resolve');
-import {getTestEnvironment} from 'jest-config';
+import {getTestEnvironment, terminalStyles} from 'jest-config';
 import * as docblock from 'jest-docblock';
 import {formatExecError} from 'jest-message-util';
 import sourcemapSupport = require('source-map-support');
-import chalk from 'chalk';
 import {TestFramework, TestRunnerContext} from './types';
 
 type RunTestInternalResult = {
@@ -44,8 +43,8 @@ function freezeConsole(
     message: LogMessage,
   ) {
     const error = new ErrorWithStack(
-      `${chalk.red(
-        `${chalk.bold(
+      `${terminalStyles.red(
+        `${terminalStyles.bold(
           'Cannot log after tests are done.',
         )} Did you forget to wait for something async in your test?`,
       )}\nAttempted to log "${message}".`,
@@ -107,7 +106,7 @@ async function runTestInternal(
   ).default;
   const testFramework: TestFramework =
     process.env.JEST_CIRCUS === '1'
-      ? require('jest-circus/runner') // eslint-disable-line import/no-extraneous-dependencies
+      ? require('jest-circus/runner')
       : require(config.testRunner);
   const Runtime: typeof RuntimeClass = config.moduleLoader
     ? require(config.moduleLoader)
