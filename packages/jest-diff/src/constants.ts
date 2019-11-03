@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from 'jest-config';
 
-export const NO_DIFF_MESSAGE = chalk.dim(
+export const NO_DIFF_MESSAGE = terminalStyles.dim(
   'Compared values have no visual difference.',
 );
 
-export const SIMILAR_MESSAGE = chalk.dim(
+export const SIMILAR_MESSAGE = terminalStyles.dim(
   'Compared values serialize to the same structure.\n' +
     'Printing internal object structure without calling `toJSON` instead.',
 );
