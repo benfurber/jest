@@ -8,7 +8,7 @@
 
 'use strict';
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {KEYS} from 'jest-watcher';
 
 const runJestMock = jest.fn();

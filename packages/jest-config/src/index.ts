@@ -8,18 +8,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {Config} from '@jest/types';
+import {terminalStyles} from '@jest/styles';
 import {isJSONString, replaceRootDirInPath} from './utils';
 import normalize from './normalize';
 import resolveConfigPath from './resolveConfigPath';
 import readConfigFileAndSetRootDir from './readConfigFileAndSetRootDir';
-import terminalStyles from './terminalStylings';
 export {getTestEnvironment, isJSONString} from './utils';
 export {default as normalize} from './normalize';
 export {default as deprecationEntries} from './Deprecated';
 export {replaceRootDirInPath} from './utils';
 export {default as defaults} from './Defaults';
 export {default as descriptions} from './Descriptions';
-export {default as terminalStyles} from './terminalStylings';
 
 type ReadConfig = {
   configPath: Config.Path | null | undefined;

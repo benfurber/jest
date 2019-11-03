@@ -1,25 +1,17 @@
 {
-  "name": "jest-resolve",
+  "name": "@jest/styles",
   "version": "24.9.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/facebook/jest.git",
-    "directory": "packages/jest-resolve"
+    "directory": "packages/jest-styles"
   },
   "license": "MIT",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
-    "@jest/styles": "^24.9.0",
-    "@jest/types": "^24.9.0",
-    "browser-resolve": "^1.11.3",
-    "jest-config": "^24.9.0",
-    "jest-pnp-resolver": "^1.2.1",
-    "realpath-native": "^1.1.0"
-  },
-  "devDependencies": {
-    "@types/browser-resolve": "^0.0.5",
-    "jest-haste-map": "^24.9.0"
+    "chalk": "3.0.0-beta.2",
+    "supports-color": "^7.1.0"
   },
   "engines": {
     "node": ">= 8"

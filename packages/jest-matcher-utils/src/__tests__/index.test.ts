@@ -6,7 +6,7 @@
  *
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import prettyFormat = require('pretty-format');
 import {alignedAnsiStyleSerializer} from '@jest/test-utils';
 import {

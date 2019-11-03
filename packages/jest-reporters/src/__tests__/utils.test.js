@@ -6,7 +6,7 @@
  */
 
 import path from 'path';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import stripAnsi from 'strip-ansi';
 import {printDisplayName, trimAndFormatPath, wrapAnsiString} from '../utils';
 

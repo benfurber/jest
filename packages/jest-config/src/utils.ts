@@ -9,7 +9,7 @@ import * as path from 'path';
 import {Config} from '@jest/types';
 import {ValidationError} from 'jest-validate';
 import Resolver = require('jest-resolve');
-import terminalStyles from './terminalStylings';
+import {terminalStyles} from '@jest/styles';
 
 type ResolveOptions = {
   rootDir: Config.Path;

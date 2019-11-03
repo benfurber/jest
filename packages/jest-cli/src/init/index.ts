@@ -7,7 +7,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import prompts = require('prompts');
 import {sync as realpath} from 'realpath-native';
 import defaultQuestions, {testScriptQuestion} from './questions';

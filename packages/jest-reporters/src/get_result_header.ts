@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {TestResult} from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {formatTestPath, printDisplayName} from './utils';
 import terminalLink = require('terminal-link');
 

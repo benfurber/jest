@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import getType = require('jest-get-type');
 import {ERROR, ValidationError, formatPrettyObject} from './utils';
 import {getValues} from './condition';

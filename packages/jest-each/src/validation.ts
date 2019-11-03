@@ -6,7 +6,7 @@
  *
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import pretty = require('pretty-format');
 import {Global} from '@jest/types';
 

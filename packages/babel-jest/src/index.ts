@@ -8,6 +8,7 @@
 import {createHash} from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
+import {terminalStyles} from '@jest/styles';
 import {Transformer} from '@jest/transform';
 import {Config} from '@jest/types';
 import {
@@ -16,7 +17,6 @@ import {
   transformSync as babelTransform,
   loadPartialConfig,
 } from '@babel/core';
-import {terminalStyles} from 'jest-config';
 import slash = require('slash');
 
 const THIS_FILE = fs.readFileSync(__filename);

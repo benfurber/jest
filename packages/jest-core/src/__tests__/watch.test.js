@@ -8,7 +8,7 @@
 
 'use strict';
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import TestWatcher from '../TestWatcher';
 import {JestHook, KEYS} from 'jest-watcher';
 

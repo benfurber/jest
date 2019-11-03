@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import ansiEscapes = require('ansi-escapes');
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import exit = require('exit');
 import slash = require('slash');
 import HasteMap = require('jest-haste-map');

@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
 import {CustomConsole} from '@jest/console';
 import {createDirectory, preRunMessage} from 'jest-util';
-import {readConfigs, terminalStyles} from 'jest-config';
+import {readConfigs} from 'jest-config';
 import Runtime = require('jest-runtime');
 import {ChangedFilesPromise} from 'jest-changed-files';
 import HasteMap = require('jest-haste-map');

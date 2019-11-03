@@ -6,11 +6,12 @@
  */
 
 import * as path from 'path';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
 import {clearLine} from 'jest-util';
 import {validateCLIOptions} from 'jest-validate';
-import {deprecationEntries, terminalStyles} from 'jest-config';
+import {deprecationEntries} from 'jest-config';
 import {getVersion, runCLI} from '@jest/core';
 import exit = require('exit');
 import yargs = require('yargs');

@@ -8,7 +8,7 @@
 import * as path from 'path';
 import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import slash = require('slash');
 import {pluralize} from 'jest-util';
 import {SummaryOptions} from './types';

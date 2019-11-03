@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@jest/types": "^24.9.0",
+    "@jest/styles": "^24.9.0",
     "jest-config": "^24.9.0",
     "jest-get-type": "^24.9.0",
     "jest-util": "^24.9.0",

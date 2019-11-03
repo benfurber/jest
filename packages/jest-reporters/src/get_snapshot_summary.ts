@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {SnapshotSummary} from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {pluralize} from 'jest-util';
 import {formatTestPath} from './utils';
 

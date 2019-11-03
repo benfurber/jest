@@ -8,7 +8,7 @@
 import assert = require('assert');
 import {format} from 'util';
 import {Console} from 'console';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {clearLine} from 'jest-util';
 import {LogCounters, LogMessage, LogTimers, LogType} from './types';
 

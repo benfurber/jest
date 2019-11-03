@@ -12,7 +12,7 @@ import {
   Suite,
   TestResult,
 } from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {specialChars} from 'jest-util';
 import {Test} from './types';
 import DefaultReporter from './default_reporter';

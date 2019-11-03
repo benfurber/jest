@@ -7,9 +7,10 @@
 
 import {cpus} from 'os';
 import * as path from 'path';
-import {deprecationEntries, readConfig, terminalStyles} from 'jest-config';
+import {deprecationEntries, readConfig} from 'jest-config';
 import {sync as realpath} from 'realpath-native';
 import yargs = require('yargs');
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {JestEnvironment} from '@jest/environment';
 import {CustomConsole} from '@jest/console';

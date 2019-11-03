@@ -10,6 +10,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@jest/styles": "^24.9.0",
     "@jest/types": "^24.9.0",
     "camelcase": "^5.3.1",
     "chalk": "^3.0.0-beta.2",

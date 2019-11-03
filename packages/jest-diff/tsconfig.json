@@ -6,8 +6,8 @@
   },
   "references": [
     {"path": "../diff-sequences"},
-    {"path": "../jest-config"},
     {"path": "../jest-get-type"},
+    {"path": "../jest-styles"},
     {"path": "../pretty-format"},
     {"path": "../test-utils"}
   ]

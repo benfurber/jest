@@ -6,7 +6,7 @@
  */
 
 import {Writable} from 'stream';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import CustomConsole from '../CustomConsole';
 
 describe('CustomConsole', () => {

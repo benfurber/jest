@@ -8,7 +8,7 @@
 import prettyFormat = require('pretty-format');
 import leven from 'leven';
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 
 const BULLET: string = terminalStyles.bold('\u25cf');
 export const DEPRECATION = `${BULLET} Deprecation Warning`;

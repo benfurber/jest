@@ -9,7 +9,7 @@ import {Config} from '@jest/types';
 import {AggregatedResult, TestResult} from '@jest/test-result';
 import {clearLine, isInteractive} from 'jest-util';
 import {getConsoleOutput} from '@jest/console';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {ReporterOnStartOptions, Test} from './types';
 import BaseReporter from './base_reporter';
 import Status from './Status';

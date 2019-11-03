@@ -4,6 +4,7 @@
   "version": "24.9.0",
   "main": "build/index.js",
   "dependencies": {
+    "@jest/styles": "^24.9.0",
     "@jest/test-result": "^24.9.0",
     "@jest/types": "^24.9.0",
     "@types/yargs": "^13.0.0",

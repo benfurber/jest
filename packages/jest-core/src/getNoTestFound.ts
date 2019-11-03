@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {TestRunData} from './types';
 import pluralize from './pluralize';

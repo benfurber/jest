@@ -6,7 +6,7 @@
   },
   "references": [
     {"path": "../jest-source-map"},
-    {"path": "../jest-util"},
-    {"path": "../jest-config"}
+    {"path": "../jest-styles"},
+    {"path": "../jest-util"}
   ]
 }

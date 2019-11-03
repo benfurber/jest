@@ -8,7 +8,7 @@
 import {Config} from '@jest/types';
 import {ChangedFilesPromise, getChangedFilesForRoots} from 'jest-changed-files';
 import {formatExecError} from 'jest-message-util';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 
 export default (
   globalConfig: Config.GlobalConfig,

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import ansiEscapes = require('ansi-escapes');
 import {specialChars} from 'jest-util';
 import Prompt from './lib/Prompt';

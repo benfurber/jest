@@ -9,7 +9,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {sync as mkdirp} from 'mkdirp';
 import naturalCompare = require('natural-compare');
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import prettyFormat = require('pretty-format');
 import {getSerializers} from './plugins';

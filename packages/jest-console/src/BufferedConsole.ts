@@ -9,7 +9,7 @@ import assert = require('assert');
 import {Console} from 'console';
 import {format} from 'util';
 import {SourceMapRegistry, getCallsite} from '@jest/source-map';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {
   ConsoleBuffer,
   LogCounters,

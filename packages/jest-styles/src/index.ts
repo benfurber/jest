@@ -5,8 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from '@jest/styles';
-
-export default function getNoTestFoundPassWithNoTests() {
-  return terminalStyles.bold('No tests found, exiting with code 0');
-}
+export {default as terminalStyles} from './terminalStylings';

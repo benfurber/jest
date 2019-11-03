@@ -7,7 +7,7 @@
 
 import {tmpdir} from 'os';
 import * as path from 'path';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 
 const NODE_MODULES = path.sep + 'node_modules' + path.sep;
 const replacePathSepForRegex = (string: string) => {

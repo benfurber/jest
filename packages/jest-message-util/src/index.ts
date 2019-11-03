@@ -9,7 +9,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {Config} from '@jest/types';
 import {AssertionResult, SerializableError} from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import micromatch = require('micromatch');
 import slash = require('slash');
 import {codeFrameColumns} from '@babel/code-frame';

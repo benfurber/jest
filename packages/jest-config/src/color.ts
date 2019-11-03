@@ -6,7 +6,7 @@
  */
 
 import {createHash} from 'crypto';
-import terminalStyles from './terminalStylings';
+import {terminalStyles} from '@jest/styles';
 
 const colors: Array<keyof typeof terminalStyles> = [
   'red',

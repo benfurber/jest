@@ -15,7 +15,7 @@ import micromatch = require('micromatch');
 import {sync as realpath} from 'realpath-native';
 import Resolver = require('jest-resolve');
 import {replacePathSepForRegex} from 'jest-regex-util';
-import terminalStyles from './terminalStylings';
+import {terminalStyles} from '@jest/styles';
 import validatePattern from './validatePattern';
 import getMaxWorkers from './getMaxWorkers';
 import {

@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {ValidationError} from 'jest-validate';
-import terminalStyles from './terminalStylings';
+import {terminalStyles} from '@jest/styles';
 import getType = require('jest-get-type');
 import {BULLET, DOCUMENTATION_NOTE} from './utils';
 

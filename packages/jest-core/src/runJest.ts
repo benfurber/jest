@@ -6,7 +6,7 @@
  */
 
 import * as path from 'path';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {sync as realpath} from 'realpath-native';
 import {CustomConsole} from '@jest/console';
 import {interopRequireDefault} from 'jest-util';

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import terminalStyles from './terminalStylings';
+import {terminalStyles} from '@jest/styles';
 import prettyFormat = require('pretty-format');
 
 const format = (value: unknown) => prettyFormat(value, {min: true});

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 
 export default (str: string, start: number, end: number) =>
   terminalStyles.dim(str.slice(0, start)) +

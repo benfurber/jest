@@ -11,6 +11,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@jest/styles": "^24.9.0",
     "@jest/transform": "^24.9.0",
     "@jest/types": "^24.9.0",
     "@types/babel__core": "^7.1.0",

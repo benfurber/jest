@@ -5,7 +5,7 @@
     "outDir": "build"
   },
   "references": [
-    {"path": "../jest-config"},
+    {"path": "../jest-styles"},
     {"path": "../jest-types"},
     {"path": "../jest-haste-map"}
   ]

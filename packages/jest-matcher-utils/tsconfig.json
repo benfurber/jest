@@ -5,9 +5,9 @@
     "outDir": "build"
   },
   "references": [
-    {"path": "../jest-config"},
     {"path": "../jest-diff"},
     {"path": "../jest-get-type"},
+    {"path": "../jest-styles"},
     {"path": "../pretty-format"},
     {"path": "../test-utils"}
   ]

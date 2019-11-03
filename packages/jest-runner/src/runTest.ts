@@ -6,6 +6,7 @@
  *
  */
 
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {TestResult} from '@jest/test-result';
 import {
@@ -22,7 +23,7 @@ import * as fs from 'graceful-fs';
 import {ErrorWithStack, interopRequireDefault, setGlobal} from 'jest-util';
 import LeakDetector from 'jest-leak-detector';
 import Resolver = require('jest-resolve');
-import {getTestEnvironment, terminalStyles} from 'jest-config';
+import {getTestEnvironment} from 'jest-config';
 import * as docblock from 'jest-docblock';
 import {formatExecError} from 'jest-message-util';
 import sourcemapSupport = require('source-map-support');

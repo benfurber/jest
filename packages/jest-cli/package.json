@@ -6,6 +6,7 @@
   "types": "build/index.d.ts",
   "dependencies": {
     "@jest/core": "^24.9.0",
+    "@jest/styles": "^24.9.0",
     "@jest/test-result": "^24.9.0",
     "@jest/types": "^24.9.0",
     "exit": "^0.1.2",

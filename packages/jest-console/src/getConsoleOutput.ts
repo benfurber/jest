@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import slash = require('slash');
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {ConsoleBuffer} from './types';
 
 export default (root: string, verbose: boolean, buffer: ConsoleBuffer) => {

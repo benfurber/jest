@@ -13,7 +13,7 @@ jest.mock('fs', () => ({
 import * as fs from 'fs';
 import * as path from 'path';
 import assert = require('assert');
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 
 import {
   SNAPSHOT_GUIDE_LINK,

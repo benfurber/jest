@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {AggregatedResult, TestResult} from '@jest/test-result';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import stringLength = require('string-length');
 import {ReporterOnStartOptions} from './types';
 import {

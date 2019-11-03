@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import diffDefault, {
   DIFF_DELETE,
   DIFF_EQUAL,
@@ -51,11 +51,11 @@ export type MatcherHintOptions = {
 
 export type DiffOptions = ImportDiffOptions;
 
-export const EXPECTED_COLOR = terminalStyles.green;
-export const RECEIVED_COLOR = terminalStyles.red;
-export const INVERTED_COLOR = terminalStyles.inverse;
-export const BOLD_WEIGHT = terminalStyles.bold;
-export const DIM_COLOR = terminalStyles.dim;
+export const EXPECTED_COLOR: any = terminalStyles.green;
+export const RECEIVED_COLOR: any = terminalStyles.red;
+export const INVERTED_COLOR: any = terminalStyles.inverse;
+export const BOLD_WEIGHT: any = terminalStyles.bold;
+export const DIM_COLOR: any = terminalStyles.dim;
 
 const MULTILINE_REGEXP = /\n/;
 const SPACE_SYMBOL = '\u{00B7}'; // middle dot

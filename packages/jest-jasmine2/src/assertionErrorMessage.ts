@@ -11,7 +11,7 @@ import {
   printExpected,
   printReceived,
 } from 'jest-matcher-utils';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import {AssertionErrorWithStack} from './types';
 
 const assertOperatorsMap: Record<string, string> = {

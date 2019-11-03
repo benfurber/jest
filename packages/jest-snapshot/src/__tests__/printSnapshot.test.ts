@@ -7,7 +7,7 @@
 
 import ansiRegex = require('ansi-regex');
 import * as styles from 'ansi-styles';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import format = require('pretty-format');
 
 import jestSnapshot = require('../index');

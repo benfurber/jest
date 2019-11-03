@@ -12,6 +12,7 @@
   "dependencies": {
     "@jest/console": "^24.7.1",
     "@jest/environment": "^24.9.0",
+    "@jest/styles": "^24.9.0",
     "@jest/source-map": "^24.3.0",
     "@jest/transform": "^24.9.0",
     "@jest/types": "^24.9.0",

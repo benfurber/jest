@@ -6,7 +6,7 @@
  */
 
 import {Config} from '@jest/types';
-import {terminalStyles} from 'jest-config';
+import {terminalStyles} from '@jest/styles';
 import camelcase from 'camelcase';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {Options} from 'yargs';
