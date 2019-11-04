@@ -8,7 +8,7 @@
 
 'use strict';
 
-import {terminalStyles} from '@jest/styles';
+import chalk from 'chalk';
 import TestWatcher from '../TestWatcher';
 import {JestHook, KEYS} from 'jest-watcher';
 
@@ -42,10 +42,13 @@ jest.mock(
     },
 );
 
-jest.doMock(
-  'terminalStyles',
-  () => new terminalStyles.constructor({enabled: false}),
-);
+// Mocking with chalk directly is required as the enabled option is not
+// currently exposed in v3 of chalk that terminalStyles uses.
+jest.doMock('@jest/styles', () => ({
+  __esModule: true,
+  terminalStyles: new chalk.constructor({enabled: false}),
+}));
+
 jest.doMock(
   '../runJest',
   () =>

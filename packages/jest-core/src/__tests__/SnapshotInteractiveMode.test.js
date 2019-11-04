@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// eslint-disable-next-line no-unused-vars
 import {terminalStyles} from '@jest/styles';
 import {KEYS} from 'jest-watcher';
 import SnapshotInteractiveMode from '../SnapshotInteractiveMode';
@@ -25,12 +26,6 @@ jest
       specialChars: {...specialChars, CLEAR: '[MOCK - clear]'},
     };
   });
-
-jest.doMock('terminalStyles', () =>
-  Object.assign(new terminalStyles.constructor({enabled: false}), {
-    stripColor: str => str,
-  }),
-);
 
 describe('SnapshotInteractiveMode', () => {
   let pipe;
