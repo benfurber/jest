@@ -34,6 +34,7 @@ module.exports = {
     '<rootDir>/packages/pretty-format/build/plugins/ConvertAnsi.js',
     require.resolve('jest-snapshot-serializer-raw'),
   ],
+  styleTerminal: true,
   testEnvironment: './packages/jest-environment-node',
   testPathIgnorePatterns: [
     '/__arbitraries__/',

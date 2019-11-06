@@ -884,6 +884,7 @@ export default function normalize(
       case 'silent':
       case 'skipFilter':
       case 'skipNodeResolution':
+      case 'styleTerminal':
       case 'testEnvironment':
       case 'testEnvironmentOptions':
       case 'testFailureExitCode':

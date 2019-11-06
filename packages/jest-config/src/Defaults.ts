@@ -63,6 +63,7 @@ const defaultOptions: Config.DefaultOptions = {
   setupFilesAfterEnv: [],
   skipFilter: false,
   snapshotSerializers: [],
+  styleTerminal: true,
   testEnvironment: 'jest-environment-jsdom',
   testEnvironmentOptions: {},
   testFailureExitCode: 1,
