@@ -59,7 +59,7 @@ export default class SnapshotInteractiveMode {
     if (this._skippedNum) {
       stats +=
         ', ' +
-        terminalStyles.bold.yellow(
+        terminalStyles.warnBold(
           pluralize('snapshot', this._skippedNum) + ' skipped',
         );
     }
@@ -103,7 +103,7 @@ export default class SnapshotInteractiveMode {
     if (this._skippedNum) {
       stats +=
         ', ' +
-        terminalStyles.bold.yellow(
+        terminalStyles.warnBold(
           pluralize('snapshot', this._skippedNum) + ' skipped',
         );
     }

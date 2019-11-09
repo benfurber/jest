@@ -69,6 +69,7 @@ jest.mock(
 const chalkInstance = new chalk.constructor({enabled: false});
 chalkInstance.error = string => chalkInstance.red(string);
 chalkInstance.errorBold = string => chalkInstance.bold.red(string);
+chalkInstance.warn = string => chalkInstance.yellow(string);
 
 jest.doMock('@jest/styles', () => ({
   __esModule: true,

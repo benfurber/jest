@@ -429,7 +429,7 @@ export default function(j$: Jasmine) {
           console.log(
             formatExecError(
               new Error(
-                terminalStyles.yellow(
+                terminalStyles.warn(
                   'Returning a Promise from "describe" is not supported. Tests must be defined synchronously.\n' +
                     'Returning a value from "describe" will fail the test in a future version of Jest.',
                 ),
@@ -442,7 +442,7 @@ export default function(j$: Jasmine) {
           console.log(
             formatExecError(
               new Error(
-                terminalStyles.yellow(
+                terminalStyles.warn(
                   'A "describe" callback must not return a value.\n' +
                     'Returning a value from "describe" will fail the test in a future version of Jest.',
                 ),

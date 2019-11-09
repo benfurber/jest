@@ -97,7 +97,7 @@ export default class VerboseReporter extends DefaultReporter {
     if (status === 'failed') {
       return terminalStyles.error(ICONS.failed);
     } else if (status === 'pending') {
-      return terminalStyles.yellow(ICONS.pending);
+      return terminalStyles.warn(ICONS.pending);
     } else if (status === 'todo') {
       return terminalStyles.magenta(ICONS.todo);
     } else {

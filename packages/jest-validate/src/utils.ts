@@ -49,7 +49,7 @@ export const logValidationWarning = (
 ) => {
   comment = comment ? '\n\n' + comment : '\n';
   console.warn(
-    terminalStyles.yellow(
+    terminalStyles.warn(
       terminalStyles.bold(name) + ':\n\n' + message + comment,
     ),
   );

@@ -28,9 +28,7 @@ export default function getNoTestFoundVerbose(
             ? value.join(', ')
             : String(value);
           const matches = pluralize('match', stats[key] || 0, 'es');
-          return `  ${key}: ${terminalStyles.yellow(
-            valueAsString,
-          )} - ${matches}`;
+          return `  ${key}: ${terminalStyles.warn(valueAsString)} - ${matches}`;
         }
         return null;
       })
@@ -54,7 +52,7 @@ export default function getNoTestFoundVerbose(
       .map(p => `"${p}"`)
       .join(', ')}`;
   } else {
-    dataMessage = `Pattern: ${terminalStyles.yellow(
+    dataMessage = `Pattern: ${terminalStyles.warn(
       globalConfig.testPathPattern,
     )} - 0 matches`;
   }

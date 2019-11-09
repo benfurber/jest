@@ -17,11 +17,11 @@ const activeFilters = (
     const filters = [
       testPathPattern
         ? terminalStyles.dim('filename ') +
-          terminalStyles.yellow('/' + testPathPattern + '/')
+          terminalStyles.warn('/' + testPathPattern + '/')
         : null,
       testNamePattern
         ? terminalStyles.dim('test name ') +
-          terminalStyles.yellow('/' + testNamePattern + '/')
+          terminalStyles.warn('/' + testNamePattern + '/')
         : null,
     ]
       .filter(f => f)

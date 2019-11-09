@@ -25,7 +25,7 @@ export default function getNoTestFound(
       .map(p => `"${p}"`)
       .join(', ')}`;
   } else {
-    dataMessage = `Pattern: ${terminalStyles.yellow(
+    dataMessage = `Pattern: ${terminalStyles.warn(
       globalConfig.testPathPattern,
     )} - 0 matches`;
   }

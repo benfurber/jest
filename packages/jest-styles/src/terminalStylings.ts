@@ -21,6 +21,9 @@ export class TerminalStyles extends chalk.Instance {
   error = (string: string) => this.chalk.red(string);
   errorBold = (string: string) => this.chalk.bold.red(string);
   errorBanner = (string: string) => this.chalk.reset.inverse.bold.red(string);
+
+  warn = (string: string) => this.chalk.yellow(string);
+  warnBold = (string: string) => this.chalk.bold.yellow(string);
 }
 
 function setLevel() {

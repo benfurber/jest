@@ -141,7 +141,7 @@ export const getSummary = (
       ? terminalStyles.errorBold(`${suitesFailed} failed`) + ', '
       : '') +
     (suitesPending
-      ? terminalStyles.bold.yellow(`${suitesPending} skipped`) + ', '
+      ? terminalStyles.warnBold(`${suitesPending} skipped`) + ', '
       : '') +
     (suitesPassed
       ? terminalStyles.bold.green(`${suitesPassed} passed`) + ', '
@@ -157,7 +157,7 @@ export const getSummary = (
       ? terminalStyles.errorBold(`${testsFailed} failed`) + ', '
       : '') +
     (testsPending
-      ? terminalStyles.bold.yellow(`${testsPending} skipped`) + ', '
+      ? terminalStyles.warnBold(`${testsPending} skipped`) + ', '
       : '') +
     (testsTodo ? terminalStyles.bold.magenta(`${testsTodo} todo`) + ', ' : '') +
     (testsPassed
@@ -171,13 +171,13 @@ export const getSummary = (
       ? terminalStyles.errorBold(`${snapshotsFailed} failed`) + ', '
       : '') +
     (snapshotsOutdated && !snapshotsDidUpdate
-      ? terminalStyles.bold.yellow(`${snapshotsOutdated} obsolete`) + ', '
+      ? terminalStyles.warnBold(`${snapshotsOutdated} obsolete`) + ', '
       : '') +
     (snapshotsOutdated && snapshotsDidUpdate
       ? terminalStyles.bold.green(`${snapshotsOutdated} removed`) + ', '
       : '') +
     (snapshotsFilesRemoved && !snapshotsDidUpdate
-      ? terminalStyles.bold.yellow(
+      ? terminalStyles.warnBold(
           pluralize('file', snapshotsFilesRemoved) + ' obsolete',
         ) + ', '
       : '') +
@@ -205,7 +205,7 @@ const renderTime = (runTime: number, estimatedTime: number, width: number) => {
   // If we are more than one second over the estimated time, highlight it.
   const renderedTime =
     estimatedTime && runTime >= estimatedTime + 1
-      ? terminalStyles.bold.yellow(runTime + 's')
+      ? terminalStyles.warnBold(runTime + 's')
       : runTime + 's';
   let time = terminalStyles.bold(`Time:`) + `        ${renderedTime}`;
   if (runTime < estimatedTime) {
