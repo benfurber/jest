@@ -33,7 +33,7 @@ const validateSnapshotVersion = (snapshotContents: string) => {
 
   if (!version) {
     return new Error(
-      terminalStyles.red(
+      terminalStyles.error(
         `${terminalStyles.bold(
           'Outdated snapshot',
         )}: No snapshot header found. ` +
@@ -46,8 +46,8 @@ const validateSnapshotVersion = (snapshotContents: string) => {
 
   if (version < SNAPSHOT_VERSION) {
     return new Error(
-      terminalStyles.red(
-        `${terminalStyles.red.bold(
+      terminalStyles.error(
+        `${terminalStyles.errorBold(
           'Outdated snapshot',
         )}: The version of the snapshot ` +
           `file associated with this test is outdated. The snapshot file ` +
@@ -63,8 +63,8 @@ const validateSnapshotVersion = (snapshotContents: string) => {
 
   if (version > SNAPSHOT_VERSION) {
     return new Error(
-      terminalStyles.red(
-        `${terminalStyles.red.bold(
+      terminalStyles.error(
+        `${terminalStyles.errorBold(
           'Outdated Jest version',
         )}: The version of this ` +
           `snapshot file indicates that this project is meant to be used ` +

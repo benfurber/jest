@@ -138,7 +138,7 @@ export const getSummary = (
   const suites =
     terminalStyles.bold('Test Suites: ') +
     (suitesFailed
-      ? terminalStyles.bold.red(`${suitesFailed} failed`) + ', '
+      ? terminalStyles.errorBold(`${suitesFailed} failed`) + ', '
       : '') +
     (suitesPending
       ? terminalStyles.bold.yellow(`${suitesPending} skipped`) + ', '
@@ -154,7 +154,7 @@ export const getSummary = (
   const tests =
     terminalStyles.bold('Tests:       ') +
     (testsFailed
-      ? terminalStyles.bold.red(`${testsFailed} failed`) + ', '
+      ? terminalStyles.errorBold(`${testsFailed} failed`) + ', '
       : '') +
     (testsPending
       ? terminalStyles.bold.yellow(`${testsPending} skipped`) + ', '
@@ -168,7 +168,7 @@ export const getSummary = (
   const snapshots =
     terminalStyles.bold('Snapshots:   ') +
     (snapshotsFailed
-      ? terminalStyles.bold.red(`${snapshotsFailed} failed`) + ', '
+      ? terminalStyles.errorBold(`${snapshotsFailed} failed`) + ', '
       : '') +
     (snapshotsOutdated && !snapshotsDidUpdate
       ? terminalStyles.bold.yellow(`${snapshotsOutdated} obsolete`) + ', '

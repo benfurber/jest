@@ -28,7 +28,7 @@ export const errorMessage = (
   )} must be of type:
     ${validTypes.map(e => terminalStyles.bold.green(e)).join(' or ')}
   but instead received:
-    ${terminalStyles.bold.red(getType(received))}
+    ${terminalStyles.errorBold(getType(received))}
 
   Example:
 ${formatExamples(option, conditions)}`;

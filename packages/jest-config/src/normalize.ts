@@ -442,7 +442,7 @@ const showTestPathPatternError = (testPathPattern: string) => {
   clearLine(process.stdout);
 
   console.log(
-    terminalStyles.red(
+    terminalStyles.error(
       `  Invalid testPattern ${testPathPattern} supplied. ` +
         `Running all tests instead.`,
     ),
@@ -766,7 +766,7 @@ export default function normalize(
           const errorMessage =
             `  moduleFileExtensions must include 'js':\n` +
             `  but instead received:\n` +
-            `    ${terminalStyles.bold.red(JSON.stringify(value))}`;
+            `    ${terminalStyles.errorBold(JSON.stringify(value))}`;
 
           // If `js` is not included, any dependency Jest itself injects into
           // the environment, like jasmine or sourcemap-support, will need to

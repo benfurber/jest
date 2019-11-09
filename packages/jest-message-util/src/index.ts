@@ -320,7 +320,7 @@ export const formatResultsErrors = (
       message = indentAllLines(message, MESSAGE_INDENT);
 
       const title =
-        terminalStyles.bold.red(
+        terminalStyles.errorBold(
           TITLE_INDENT +
             TITLE_BULLET +
             result.ancestorTitles.join(ANCESTRY_SEPARATOR) +

@@ -44,9 +44,13 @@ jest.mock(
 
 // Mocking with chalk directly is required as the enabled option is not
 // currently exposed in v3 of chalk that terminalStyles uses.
+const chalkInstance = new chalk.constructor({enabled: false});
+chalkInstance.error = string => chalkInstance.red(string);
+chalkInstance.errorBold = string => chalkInstance.bold.red(string);
+
 jest.doMock('@jest/styles', () => ({
   __esModule: true,
-  terminalStyles: new chalk.constructor({enabled: false}),
+  terminalStyles: chalkInstance,
 }));
 
 jest.doMock(

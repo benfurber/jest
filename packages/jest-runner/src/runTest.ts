@@ -44,7 +44,7 @@ function freezeConsole(
     message: LogMessage,
   ) {
     const error = new ErrorWithStack(
-      `${terminalStyles.red(
+      `${terminalStyles.error(
         `${terminalStyles.bold(
           'Cannot log after tests are done.',
         )} Did you forget to wait for something async in your test?`,

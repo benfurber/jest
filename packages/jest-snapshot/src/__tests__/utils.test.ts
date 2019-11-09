@@ -78,7 +78,7 @@ test('getSnapshotData() throws when no snapshot version', () => {
   const update = 'none';
 
   expect(() => getSnapshotData(filename, update)).toThrowError(
-    terminalStyles.red(
+    terminalStyles.error(
       `${terminalStyles.bold(
         'Outdated snapshot',
       )}: No snapshot header found. ` +
@@ -99,8 +99,8 @@ test('getSnapshotData() throws for older snapshot version', () => {
   const update = 'none';
 
   expect(() => getSnapshotData(filename, update)).toThrowError(
-    terminalStyles.red(
-      `${terminalStyles.red.bold(
+    terminalStyles.error(
+      `${terminalStyles.errorBold(
         'Outdated snapshot',
       )}: The version of the snapshot ` +
         `file associated with this test is outdated. The snapshot file ` +
@@ -124,8 +124,8 @@ test('getSnapshotData() throws for newer snapshot version', () => {
   const update = 'none';
 
   expect(() => getSnapshotData(filename, update)).toThrowError(
-    terminalStyles.red(
-      `${terminalStyles.red.bold(
+    terminalStyles.error(
+      `${terminalStyles.errorBold(
         'Outdated Jest version',
       )}: The version of this ` +
         `snapshot file indicates that this project is meant to be used ` +

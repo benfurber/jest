@@ -11,7 +11,7 @@ const DOT = ' \u2022 ';
 
 export default function enhanceUnexpectedTokenMessage(e: Error) {
   e.stack =
-    `${terminalStyles.bold.red('Jest encountered an unexpected token')}
+    `${terminalStyles.errorBold('Jest encountered an unexpected token')}
 
 This usually means that you are trying to import a file which Jest cannot parse, e.g. it's not plain JavaScript.
 
@@ -31,7 +31,7 @@ ${DOT}If you simply want to mock your non-JS modules (e.g. binary assets) you ca
 You'll find more details and examples of these config options in the docs:
 ${terminalStyles.cyan('https://jestjs.io/docs/en/configuration.html')}
 
-${terminalStyles.bold.red('Details:')}
+${terminalStyles.errorBold('Details:')}
 
 ` + e.stack;
 

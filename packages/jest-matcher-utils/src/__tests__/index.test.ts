@@ -334,7 +334,7 @@ describe('matcherHint', () => {
       receivedColor,
     });
 
-    const substringNegative = terminalStyles.red(receivedArgument);
+    const substringNegative = terminalStyles.error(receivedArgument);
     const substringPositive = receivedColor(receivedArgument);
 
     expect(received).not.toMatch(substringNegative);

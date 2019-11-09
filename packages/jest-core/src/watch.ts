@@ -475,19 +475,18 @@ const checkForConflicts = (
   let error;
   if (conflictor.forbiddenOverwriteMessage) {
     error = `
-  Watch plugin ${terminalStyles.bold.red(
-    getPluginIdentifier(plugin),
-  )} attempted to register key ${terminalStyles.bold.red(`<${key}>`)},
-  that is reserved internally for ${terminalStyles.bold.red(
+  Watch plugin ${terminalStyles.errorBold(getPluginIdentifier(plugin))} 
+  attempted to register key ${terminalStyles.errorBold(`<${key}>`)},
+  that is reserved internally for ${terminalStyles.errorBold(
     conflictor.forbiddenOverwriteMessage,
   )}.
   Please change the configuration key for this plugin.`.trim();
   } else {
     const plugins = [conflictor.plugin, plugin]
-      .map(p => terminalStyles.bold.red(getPluginIdentifier(p)))
+      .map(p => terminalStyles.errorBold(getPluginIdentifier(p)))
       .join(' and ');
     error = `
-  Watch plugins ${plugins} both attempted to register key ${terminalStyles.bold.red(
+  Watch plugins ${plugins} both attempted to register key ${terminalStyles.errorBold(
       `<${key}>`,
     )}.
   Please change the key configuration for one of the conflicting plugins to avoid overlap.`.trim();

@@ -35,7 +35,7 @@ export class ValidationError extends Error {
     super();
     comment = comment ? '\n\n' + comment : '\n';
     this.name = '';
-    this.message = terminalStyles.red(
+    this.message = terminalStyles.error(
       terminalStyles.bold(name) + ':\n\n' + message + comment,
     );
     Error.captureStackTrace(this, () => {});

@@ -1,18 +1,26 @@
-import * as chalk from 'chalk';
+import chalk = require('chalk');
+import * as chalkTypes from 'chalk';
 import {stdout} from 'supports-color';
 
 interface args {
-  level: chalk.ColorSupport['level'];
+  level: chalkTypes.ColorSupport['level'];
 }
 
 export class TerminalStyles extends chalk.Instance {
-  supportsColor: false | chalk.ColorSupport;
+  level: chalkTypes.ColorSupport['level'];
+  supportsColor: false | any;
+  chalk: chalkTypes.Chalk;
 
   constructor(args: args) {
     super();
     this.level = args.level;
     this.supportsColor = stdout;
+    this.chalk = new chalk.Instance({level: this.level});
   }
+
+  error = (string: string) => this.chalk.red(string);
+  errorBold = (string: string) => this.chalk.bold.red(string);
+  errorBanner = (string: string) => this.chalk.reset.inverse.bold.red(string);
 }
 
 function setLevel() {
@@ -28,6 +36,6 @@ function setLevel() {
 }
 
 const level = setLevel();
-const terminalStyles: any = new TerminalStyles({level});
+const terminalStyles = new TerminalStyles({level});
 
 export default terminalStyles;

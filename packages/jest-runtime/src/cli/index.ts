@@ -96,7 +96,7 @@ export function run(cliArgv?: Config.Argv, cliInfo?: Array<string>) {
       runtime.requireModule(filePath);
     })
     .catch(e => {
-      console.error(terminalStyles.red(e.stack || e));
+      console.error(terminalStyles.error(e.stack || e));
       process.on('exit', () => (process.exitCode = 1));
     });
 }

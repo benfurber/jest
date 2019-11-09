@@ -109,7 +109,7 @@ export default class SummaryReporter extends BaseReporter {
           message +=
             '\n' +
             (wasInterrupted
-              ? terminalStyles.bold.red('Test run was interrupted.')
+              ? terminalStyles.errorBold('Test run was interrupted.')
               : this._getTestSummary(contexts, this._globalConfig));
         }
         this.log(message);

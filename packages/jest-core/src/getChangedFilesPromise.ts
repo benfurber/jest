@@ -29,7 +29,7 @@ export default (
         .filter(line => !line.includes('Command failed:'))
         .join('\n');
 
-      console.error(terminalStyles.red(`\n\n${message}`));
+      console.error(terminalStyles.error(`\n\n${message}`));
 
       process.exit(1);
 

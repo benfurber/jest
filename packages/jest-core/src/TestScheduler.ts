@@ -105,7 +105,7 @@ export default class TestScheduler {
       // Throws when the context is leaked after executing a test.
       if (testResult.leaks) {
         const message =
-          terminalStyles.red.bold('EXPERIMENTAL FEATURE!\n') +
+          terminalStyles.errorBold('EXPERIMENTAL FEATURE!\n') +
           'Your test suite is leaking memory. Please ensure all references are cleaned.\n' +
           '\n' +
           'There is a number of things that can leak memory:\n' +

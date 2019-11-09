@@ -18,7 +18,7 @@ const FAIL_TEXT = 'FAIL';
 const PASS_TEXT = 'PASS';
 
 const FAIL = terminalStyles.supportsColor
-  ? terminalStyles.reset.inverse.bold.red(` ${FAIL_TEXT} `)
+  ? terminalStyles.errorBanner(` ${FAIL_TEXT} `)
   : FAIL_TEXT;
 
 const PASS = terminalStyles.supportsColor

@@ -26,8 +26,8 @@ export default (root: string, verbose: boolean, buffer: ConsoleBuffer) => {
       message = terminalStyles.yellow(message);
       typeMessage = terminalStyles.yellow(typeMessage);
     } else if (type === 'error') {
-      message = terminalStyles.red(message);
-      typeMessage = terminalStyles.red(typeMessage);
+      message = terminalStyles.error(message);
+      typeMessage = terminalStyles.error(typeMessage);
     }
 
     return (

@@ -418,7 +418,7 @@ const createNoMappedModuleFoundError = (
   resolver?: Function | string | null,
 ) => {
   const error = new Error(
-    terminalStyles.red(`${terminalStyles.bold('Configuration error')}:
+    terminalStyles.error(`${terminalStyles.bold('Configuration error')}:
 
 Could not locate module ${terminalStyles.bold(moduleName)} mapped as:
 ${terminalStyles.bold(updatedName)}.

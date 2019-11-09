@@ -15,7 +15,7 @@ export default (
   new Promise((resolve, reject) => {
     if (typeof stdin.setRawMode === 'function') {
       const messages = [
-        terminalStyles.red('There are deprecation warnings.\n'),
+        terminalStyles.error('There are deprecation warnings.\n'),
         terminalStyles.dim(' \u203A Press ') +
           'Enter' +
           terminalStyles.dim(' to continue.'),

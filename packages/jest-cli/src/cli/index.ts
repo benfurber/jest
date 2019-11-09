@@ -36,9 +36,9 @@ export async function run(maybeArgv?: Array<string>, project?: Config.Path) {
     clearLine(process.stderr);
     clearLine(process.stdout);
     if (error.stack) {
-      console.error(terminalStyles.red(error.stack));
+      console.error(terminalStyles.error(error.stack));
     } else {
-      console.error(terminalStyles.red(error));
+      console.error(terminalStyles.error(error));
     }
 
     exit(1);

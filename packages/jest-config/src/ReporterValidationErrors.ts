@@ -30,7 +30,7 @@ export function createReporterError(
     `  Reporter at index ${reporterIndex} must be of type:\n` +
     `    ${terminalStyles.bold.green(validReporterTypes.join(' or '))}\n` +
     `  but instead received:\n` +
-    `    ${terminalStyles.bold.red(getType(reporterValue))}`;
+    `    ${terminalStyles.errorBold(getType(reporterValue))}`;
 
   return new ValidationError(ERROR, errorMessage, DOCUMENTATION_NOTE);
 }
@@ -47,7 +47,7 @@ export function createArrayReporterError(
     `  Unexpected value for ${valueName} ` +
     `at index ${valueIndex} of reporter at index ${reporterIndex}\n` +
     '  Expected:\n' +
-    `    ${terminalStyles.bold.red(expectedType)}\n` +
+    `    ${terminalStyles.errorBold(expectedType)}\n` +
     '  Got:\n' +
     `    ${terminalStyles.bold.green(getType(value))}\n` +
     `  Reporter configuration:\n` +

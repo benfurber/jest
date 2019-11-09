@@ -58,7 +58,7 @@ const assertThrowingMatcherHint = (operatorName: string) =>
   operatorName
     ? terminalStyles.dim('assert') +
       terminalStyles.dim('.' + operatorName + '(') +
-      terminalStyles.red('function') +
+      terminalStyles.error('function') +
       terminalStyles.dim(')')
     : '';
 
@@ -73,13 +73,13 @@ const assertMatcherHint = (
     message =
       terminalStyles.dim('assert') +
       terminalStyles.dim('(') +
-      terminalStyles.red('received') +
+      terminalStyles.error('received') +
       terminalStyles.dim(')');
   } else if (operatorName) {
     message =
       terminalStyles.dim('assert') +
       terminalStyles.dim('.' + operatorName + '(') +
-      terminalStyles.red('received') +
+      terminalStyles.error('received') +
       terminalStyles.dim(', ') +
       terminalStyles.green('expected') +
       terminalStyles.dim(')');

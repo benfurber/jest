@@ -99,7 +99,7 @@ export default class CoverageReporter extends BaseReporter {
       aggregatedResults.coverageMap = map;
     } catch (e) {
       console.error(
-        terminalStyles.red(`
+        terminalStyles.error(`
         Failed to write coverage reports:
         ERROR: ${e.toString()}
         STACK: ${e.stack}
@@ -182,7 +182,7 @@ export default class CoverageReporter extends BaseReporter {
           }
         } catch (error) {
           console.error(
-            terminalStyles.red(
+            terminalStyles.error(
               [
                 `Failed to collect coverage from ${filename}`,
                 `ERROR: ${error.message}`,
