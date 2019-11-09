@@ -80,7 +80,7 @@ function diff(a: any, b: any, options?: DiffOptions): string | null {
   if (expectedType !== getType(b)) {
     return (
       '  Comparing two different types of values.' +
-      ` Expected ${terminalStyles.green(expectedType)} but ` +
+      ` Expected ${terminalStyles.success(expectedType)} but ` +
       `received ${terminalStyles.error(getType(b))}.`
     );
   }

@@ -28,7 +28,7 @@ export function createReporterError(
 ) {
   const errorMessage =
     `  Reporter at index ${reporterIndex} must be of type:\n` +
-    `    ${terminalStyles.bold.green(validReporterTypes.join(' or '))}\n` +
+    `    ${terminalStyles.successBold(validReporterTypes.join(' or '))}\n` +
     `  but instead received:\n` +
     `    ${terminalStyles.errorBold(getType(reporterValue))}`;
 
@@ -49,9 +49,9 @@ export function createArrayReporterError(
     '  Expected:\n' +
     `    ${terminalStyles.errorBold(expectedType)}\n` +
     '  Got:\n' +
-    `    ${terminalStyles.bold.green(getType(value))}\n` +
+    `    ${terminalStyles.successBold(getType(value))}\n` +
     `  Reporter configuration:\n` +
-    `    ${terminalStyles.bold.green(
+    `    ${terminalStyles.successBold(
       JSON.stringify(arrayReporter, null, 2)
         .split('\n')
         .join('\n    '),

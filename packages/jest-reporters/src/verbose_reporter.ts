@@ -101,7 +101,7 @@ export default class VerboseReporter extends DefaultReporter {
     } else if (status === 'todo') {
       return terminalStyles.magenta(ICONS.todo);
     } else {
-      return terminalStyles.green(ICONS.success);
+      return terminalStyles.success(ICONS.success);
     }
   }
 

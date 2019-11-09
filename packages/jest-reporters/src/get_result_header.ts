@@ -22,7 +22,7 @@ const FAIL = terminalStyles.supportsColor
   : FAIL_TEXT;
 
 const PASS = terminalStyles.supportsColor
-  ? terminalStyles.reset.inverse.bold.green(` ${PASS_TEXT} `)
+  ? terminalStyles.successBanner(` ${PASS_TEXT} `)
   : PASS_TEXT;
 
 export default (

@@ -144,7 +144,7 @@ export const getSummary = (
       ? terminalStyles.warnBold(`${suitesPending} skipped`) + ', '
       : '') +
     (suitesPassed
-      ? terminalStyles.bold.green(`${suitesPassed} passed`) + ', '
+      ? terminalStyles.successBold(`${suitesPassed} passed`) + ', '
       : '') +
     (suitesRun !== suitesTotal
       ? suitesRun + ' of ' + suitesTotal
@@ -161,7 +161,7 @@ export const getSummary = (
       : '') +
     (testsTodo ? terminalStyles.bold.magenta(`${testsTodo} todo`) + ', ' : '') +
     (testsPassed
-      ? terminalStyles.bold.green(`${testsPassed} passed`) + ', '
+      ? terminalStyles.successBold(`${testsPassed} passed`) + ', '
       : '') +
     `${testsTotal} total`;
 
@@ -174,7 +174,7 @@ export const getSummary = (
       ? terminalStyles.warnBold(`${snapshotsOutdated} obsolete`) + ', '
       : '') +
     (snapshotsOutdated && snapshotsDidUpdate
-      ? terminalStyles.bold.green(`${snapshotsOutdated} removed`) + ', '
+      ? terminalStyles.successBold(`${snapshotsOutdated} removed`) + ', '
       : '') +
     (snapshotsFilesRemoved && !snapshotsDidUpdate
       ? terminalStyles.warnBold(
@@ -182,18 +182,18 @@ export const getSummary = (
         ) + ', '
       : '') +
     (snapshotsFilesRemoved && snapshotsDidUpdate
-      ? terminalStyles.bold.green(
+      ? terminalStyles.successBold(
           pluralize('file', snapshotsFilesRemoved) + ' removed',
         ) + ', '
       : '') +
     (snapshotsUpdated
-      ? terminalStyles.bold.green(`${snapshotsUpdated} updated`) + ', '
+      ? terminalStyles.successBold(`${snapshotsUpdated} updated`) + ', '
       : '') +
     (snapshotsAdded
-      ? terminalStyles.bold.green(`${snapshotsAdded} written`) + ', '
+      ? terminalStyles.successBold(`${snapshotsAdded} written`) + ', '
       : '') +
     (snapshotsPassed
-      ? terminalStyles.bold.green(`${snapshotsPassed} passed`) + ', '
+      ? terminalStyles.successBold(`${snapshotsPassed} passed`) + ', '
       : '') +
     `${snapshotsTotal} total`;
 
@@ -223,7 +223,7 @@ const renderTime = (runTime: number, estimatedTime: number, width: number) => {
     if (availableWidth >= 2) {
       time +=
         '\n' +
-        terminalStyles.green('█').repeat(length) +
+        terminalStyles.success('█').repeat(length) +
         terminalStyles.white('█').repeat(availableWidth - length);
     }
   }

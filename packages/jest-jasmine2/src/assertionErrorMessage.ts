@@ -81,7 +81,7 @@ const assertMatcherHint = (
       terminalStyles.dim('.' + operatorName + '(') +
       terminalStyles.error('received') +
       terminalStyles.dim(', ') +
-      terminalStyles.green('expected') +
+      terminalStyles.success('expected') +
       terminalStyles.dim(')');
   }
 

@@ -322,7 +322,7 @@ describe('matcherHint', () => {
       {expectedColor, secondArgument: '...expected'},
     );
 
-    const substringNegative = terminalStyles.green(expectedArgument);
+    const substringNegative = terminalStyles.success(expectedArgument);
 
     expect(received).not.toMatch(substringNegative);
   });
@@ -349,7 +349,7 @@ describe('matcherHint', () => {
       secondArgumentColor,
     });
 
-    const substringNegative = terminalStyles.green(secondArgument);
+    const substringNegative = terminalStyles.success(secondArgument);
     const substringPositive = secondArgumentColor(secondArgument);
 
     expect(received).not.toMatch(substringNegative);

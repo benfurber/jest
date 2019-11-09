@@ -26,7 +26,7 @@ export const errorMessage = (
   const message = `  Option ${terminalStyles.bold(
     `"${path && path.length > 0 ? path.join('.') + '.' : ''}${option}"`,
   )} must be of type:
-    ${validTypes.map(e => terminalStyles.bold.green(e)).join(' or ')}
+    ${validTypes.map(e => terminalStyles.successBold(e)).join(' or ')}
   but instead received:
     ${terminalStyles.errorBold(getType(received))}
 

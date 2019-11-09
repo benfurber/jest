@@ -54,7 +54,7 @@ export default class SnapshotInteractiveMode {
     if (numPass) {
       stats +=
         ', ' +
-        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
+        terminalStyles.successBold(pluralize('snapshot', numPass) + ' updated');
     }
     if (this._skippedNum) {
       stats +=
@@ -98,7 +98,7 @@ export default class SnapshotInteractiveMode {
     if (numPass) {
       stats +=
         ', ' +
-        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
+        terminalStyles.successBold(pluralize('snapshot', numPass) + ' updated');
     }
     if (this._skippedNum) {
       stats +=
@@ -134,7 +134,7 @@ export default class SnapshotInteractiveMode {
     if (numPass) {
       stats +=
         ', ' +
-        terminalStyles.bold.green(pluralize('snapshot', numPass) + ' updated');
+        terminalStyles.successBold(pluralize('snapshot', numPass) + ' updated');
     }
     const messages = [
       '\n' + terminalStyles.bold('Interactive Snapshot Result'),

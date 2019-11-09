@@ -37,6 +37,27 @@ describe('terminalStyles', () => {
       expect(call).toEqual(expectation);
     });
 
+    it('calls success() correctly', () => {
+      const call = terminalStyles.success(`Successful`);
+      const expectation = chalkInstance.green(`Successful`);
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls successBold() correctly', () => {
+      const call = terminalStyles.successBold(`This went well`);
+      const expectation = chalkInstance.bold.green(`This went well`);
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls successBanner() correctly', () => {
+      const call = terminalStyles.successBanner(`Perfect!`);
+      const expectation = chalkInstance.reset.inverse.bold.green(`Perfect!`);
+
+      expect(call).toEqual(expectation);
+    });
+
     it('calls warn() correctly', () => {
       const call = terminalStyles.warn(`This is a warning`);
       const expectation = chalkInstance.yellow(`This is a warning`);
@@ -83,6 +104,27 @@ describe('terminalStyles', () => {
       const expectation = chalkInstance.reset.inverse.bold.red(
         `There's a very big problem`,
       );
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls success() correctly', () => {
+      const call = terminalStyles.success(`Successful`);
+      const expectation = chalkInstance.green(`Successful`);
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls successBold() correctly', () => {
+      const call = terminalStyles.successBold(`This went well`);
+      const expectation = chalkInstance.bold.green(`This went well`);
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls successBanner() correctly', () => {
+      const call = terminalStyles.successBanner(`Perfect!`);
+      const expectation = chalkInstance.reset.inverse.bold.green(`Perfect!`);
 
       expect(call).toEqual(expectation);
     });
