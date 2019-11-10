@@ -100,13 +100,6 @@ const initialOptions: Config.InitialOptions = {
   skipNodeResolution: false,
   snapshotResolver: '<rootDir>/snapshotResolver.js',
   snapshotSerializers: ['my-serializer-module'],
-  styleTerminal: {
-    error: 'green',
-    highlight: 'red',
-    message: 'red',
-    success: 'red',
-    warn: 'red',
-  },
   testEnvironment: 'jest-environment-jsdom',
   testEnvironmentOptions: {userAgent: 'Agent/007'},
   testFailureExitCode: 1,
