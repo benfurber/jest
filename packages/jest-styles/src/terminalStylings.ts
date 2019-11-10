@@ -1,6 +1,7 @@
 import chalk = require('chalk');
 import * as chalkTypes from 'chalk';
 import {stdout} from 'supports-color';
+import {Config} from '@jest/types';
 
 interface args {
   colors?: colors;
@@ -8,9 +9,9 @@ interface args {
 }
 
 interface colors {
-  error: color;
-  success: color;
-  warn: color;
+  error: Config.DisplayNameColor;
+  success: Config.DisplayNameColor;
+  warn: Config.DisplayNameColor;
 }
 
 const defaultColors: colors = {
@@ -49,24 +50,3 @@ export class TerminalStyles extends chalk.Instance {
   warnBanner = (string: string) =>
     this.chalk.reset.inverse.bold[this.colors.warn](string);
 }
-
-// Duplication of chalk's private color types.
-declare type color =
-  | 'black'
-  | 'red'
-  | 'green'
-  | 'yellow'
-  | 'blue'
-  | 'magenta'
-  | 'cyan'
-  | 'white'
-  | 'gray'
-  | 'grey'
-  | 'blackBright'
-  | 'redBright'
-  | 'greenBright'
-  | 'yellowBright'
-  | 'blueBright'
-  | 'magentaBright'
-  | 'cyanBright'
-  | 'whiteBright';

@@ -247,7 +247,7 @@ type NotifyMode =
  * https://github.com/chalk/chalk/pull/336
  * gets merged
  */
-type DisplayNameColor =
+export type DisplayNameColor =
   | 'black'
   | 'red'
   | 'green'
