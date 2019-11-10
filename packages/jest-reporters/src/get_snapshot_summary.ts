@@ -7,20 +7,20 @@
 
 import {Config} from '@jest/types';
 import {SnapshotSummary} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {pluralize} from 'jest-util';
 import {formatTestPath} from './utils';
 
 const ARROW = ' \u203A ';
 const DOWN_ARROW = ' \u21B3 ';
 const DOT = ' \u2022 ';
-const FAIL_COLOR = chalk.bold.red;
-const OBSOLETE_COLOR = chalk.bold.yellow;
-const SNAPSHOT_ADDED = chalk.bold.green;
-const SNAPSHOT_NOTE = chalk.dim;
-const SNAPSHOT_REMOVED = chalk.bold.green;
-const SNAPSHOT_SUMMARY = chalk.bold;
-const SNAPSHOT_UPDATED = chalk.bold.green;
+const FAIL_COLOR = terminalStyles.errorBold;
+const OBSOLETE_COLOR = terminalStyles.warnBold;
+const SNAPSHOT_ADDED = terminalStyles.successBold;
+const SNAPSHOT_NOTE = terminalStyles.dim;
+const SNAPSHOT_REMOVED = terminalStyles.successBold;
+const SNAPSHOT_SUMMARY = terminalStyles.bold;
+const SNAPSHOT_UPDATED = terminalStyles.successBold;
 
 export default (
   snapshots: SnapshotSummary,

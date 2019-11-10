@@ -7,7 +7,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import prompts = require('prompts');
 import {sync as realpath} from 'realpath-native';
 import defaultQuestions, {testScriptQuestion} from './questions';
@@ -81,7 +81,7 @@ export default async (rootDir: string = realpath(process.cwd())) => {
   // Start the init process
   console.log();
   console.log(
-    chalk.underline(
+    terminalStyles.underline(
       `The following questions will help Jest to create a suitable configuration for your project\n`,
     ),
   );
@@ -112,7 +112,9 @@ export default async (rootDir: string = realpath(process.cwd())) => {
     fs.writeFileSync(projectPackageJsonPath, modifiedPackageJson);
 
     console.log('');
-    console.log(`✏️  Modified ${chalk.cyan(projectPackageJsonPath)}`);
+    console.log(
+      `✏️  Modified ${terminalStyles.highlight(projectPackageJsonPath)}`,
+    );
   }
 
   const generatedConfig = generateConfigFile(results);
@@ -121,6 +123,8 @@ export default async (rootDir: string = realpath(process.cwd())) => {
 
   console.log('');
   console.log(
-    `📝  Configuration file created at ${chalk.cyan(jestConfigPath)}`,
+    `📝  Configuration file created at ${terminalStyles.highlight(
+      jestConfigPath,
+    )}`,
   );
 };

@@ -11,11 +11,11 @@ import {sync as glob} from 'glob';
 import {Config} from '@jest/types';
 import {ValidationError, validate} from 'jest-validate';
 import {clearLine, replacePathSepForGlob} from 'jest-util';
-import chalk from 'chalk';
 import micromatch = require('micromatch');
 import {sync as realpath} from 'realpath-native';
 import Resolver = require('jest-resolve');
 import {replacePathSepForRegex} from 'jest-regex-util';
+import {terminalStyles} from '@jest/styles';
 import validatePattern from './validatePattern';
 import getMaxWorkers from './getMaxWorkers';
 import {
@@ -116,7 +116,7 @@ const setupPreset = (
   } catch (error) {
     if (error instanceof SyntaxError || error instanceof TypeError) {
       throw createConfigError(
-        `  Preset ${chalk.bold(presetPath)} is invalid:\n\n  ${
+        `  Preset ${terminalStyles.bold(presetPath)} is invalid:\n\n  ${
           error.message
         }\n  ${error.stack}`,
       );
@@ -130,26 +130,26 @@ const setupPreset = (
 
         if (preset) {
           throw createConfigError(
-            `  Module ${chalk.bold(
+            `  Module ${terminalStyles.bold(
               presetPath,
             )} should have "jest-preset.js" or "jest-preset.json" file at the root.`,
           );
         }
         throw createConfigError(
-          `  Preset ${chalk.bold(presetPath)} not found.`,
+          `  Preset ${terminalStyles.bold(presetPath)} not found.`,
         );
       }
       throw createConfigError(
-        `  Missing dependency in ${chalk.bold(presetPath)}:\n\n  ${
+        `  Missing dependency in ${terminalStyles.bold(presetPath)}:\n\n  ${
           error.message
         }\n  ${error.stack}`,
       );
     }
 
     throw createConfigError(
-      `  An unknown error occurred in ${chalk.bold(presetPath)}:\n\n  ${
-        error.message
-      }\n  ${error.stack}`,
+      `  An unknown error occurred in ${terminalStyles.bold(
+        presetPath,
+      )}:\n\n  ${error.message}\n  ${error.stack}`,
     );
   }
 
@@ -289,19 +289,23 @@ const normalizePreprocessor = (
 ): Config.InitialOptionsWithRootDir => {
   if (options.scriptPreprocessor && options.transform) {
     throw createConfigError(
-      `  Options: ${chalk.bold('scriptPreprocessor')} and ${chalk.bold(
-        'transform',
-      )} cannot be used together.
-  Please change your configuration to only use ${chalk.bold('transform')}.`,
+      `  Options: ${terminalStyles.bold(
+        'scriptPreprocessor',
+      )} and ${terminalStyles.bold('transform')} cannot be used together.
+  Please change your configuration to only use ${terminalStyles.bold(
+    'transform',
+  )}.`,
     );
   }
 
   if (options.preprocessorIgnorePatterns && options.transformIgnorePatterns) {
     throw createConfigError(
-      `  Options ${chalk.bold('preprocessorIgnorePatterns')} and ${chalk.bold(
+      `  Options ${terminalStyles.bold(
+        'preprocessorIgnorePatterns',
+      )} and ${terminalStyles.bold(
         'transformIgnorePatterns',
       )} cannot be used together.
-  Please change your configuration to only use ${chalk.bold(
+  Please change your configuration to only use ${terminalStyles.bold(
     'transformIgnorePatterns',
   )}.`,
     );
@@ -349,7 +353,9 @@ const normalizeRootDir = (
   // Assert that there *is* a rootDir
   if (!options.rootDir) {
     throw createConfigError(
-      `  Configuration option ${chalk.bold('rootDir')} must be specified.`,
+      `  Configuration option ${terminalStyles.bold(
+        'rootDir',
+      )} must be specified.`,
     );
   }
   options.rootDir = path.normalize(options.rootDir);
@@ -436,7 +442,7 @@ const showTestPathPatternError = (testPathPattern: string) => {
   clearLine(process.stdout);
 
   console.log(
-    chalk.red(
+    terminalStyles.error(
       `  Invalid testPattern ${testPathPattern} supplied. ` +
         `Running all tests instead.`,
     ),
@@ -463,6 +469,7 @@ export default function normalize(
       'coverageThreshold',
       'globals',
       'moduleNameMapper',
+      'styleTerminal',
       'testEnvironmentOptions',
       'transform',
     ],
@@ -490,10 +497,10 @@ export default function normalize(
     options.setupTestFrameworkScriptFile &&
     options.setupFilesAfterEnv.length > 0
   ) {
-    throw createConfigError(`  Options: ${chalk.bold(
+    throw createConfigError(`  Options: ${terminalStyles.bold(
       'setupTestFrameworkScriptFile',
-    )} and ${chalk.bold('setupFilesAfterEnv')} cannot be used together.
-  Please change your configuration to only use ${chalk.bold(
+    )} and ${terminalStyles.bold('setupFilesAfterEnv')} cannot be used together.
+  Please change your configuration to only use ${terminalStyles.bold(
     'setupFilesAfterEnv',
   )}.`);
   }
@@ -755,7 +762,7 @@ export default function normalize(
           const errorMessage =
             `  moduleFileExtensions must include 'js':\n` +
             `  but instead received:\n` +
-            `    ${chalk.bold.red(JSON.stringify(value))}`;
+            `    ${terminalStyles.errorBold(JSON.stringify(value))}`;
 
           // If `js` is not included, any dependency Jest itself injects into
           // the environment, like jasmine or sourcemap-support, will need to
@@ -803,7 +810,9 @@ export default function normalize(
             typeof color !== 'string'
           ) {
             const errorMessage =
-              `  Option "${chalk.bold('displayName')}" must be of type:\n\n` +
+              `  Option "${terminalStyles.bold(
+                'displayName',
+              )}" must be of type:\n\n` +
               '  {\n' +
               '    name: string;\n' +
               '    color: string;\n' +
@@ -822,7 +831,9 @@ export default function normalize(
       case 'testTimeout': {
         if (oldOptions[key] < 0) {
           throw createConfigError(
-            `  Option "${chalk.bold('testTimeout')}" must be a natural number.`,
+            `  Option "${terminalStyles.bold(
+              'testTimeout',
+            )}" must be a natural number.`,
           );
         }
 
@@ -962,8 +973,8 @@ export default function normalize(
 
   if (newOptions.testRegex!.length && options.testMatch) {
     throw createConfigError(
-      `  Configuration options ${chalk.bold('testMatch')} and` +
-        ` ${chalk.bold('testRegex')} cannot be used together.`,
+      `  Configuration options ${terminalStyles.bold('testMatch')} and` +
+        ` ${terminalStyles.bold('testRegex')} cannot be used together.`,
     );
   }
 

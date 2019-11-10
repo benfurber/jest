@@ -27,7 +27,7 @@ Given JavaScript **values**, `diffDefault(a, b, options?)` does the following:
 
 1. **serialize** the values as strings using the `pretty-format` package
 2. **compare** the strings line-by-line using the `diff-sequences` package
-3. **format** the changed or common lines using the `chalk` package
+3. **format** the changed or common lines using the `terminalStyles` package
 
 To use this function, write either of the following:
 
@@ -75,7 +75,7 @@ Given **strings**, `diffStringsUnified(a, b, options?)` does the following:
 
 1. **compare** the strings character-by-character using the `diff-sequences` package
 2. **clean up** small (often coincidental) common substrings, also known as chaff
-3. **format** the changed or common lines using the `chalk` package
+3. **format** the changed or common lines using the `terminalStyles` package
 
 Although the function is mainly for **multiline** strings, it compares any strings.
 
@@ -118,7 +118,7 @@ If the input strings can have **arbitrary length**, we recommend that the callin
 Given **arrays of strings**, `diffLinesUnified(aLines, bLines, options?)` does the following:
 
 1. **compare** the arrays line-by-line using the `diff-sequences` package
-2. **format** the changed or common lines using the `chalk` package
+2. **format** the changed or common lines using the `terminalStyles` package
 
 You might call this function when strings have been split into lines and you do not need to see changed substrings within lines.
 
@@ -156,7 +156,7 @@ Here are edge cases for arguments and return values:
 Given two **pairs** of arrays of strings, `diffLinesUnified2(aLinesDisplay, bLinesDisplay, aLinesCompare, bLinesCompare, options?)` does the following:
 
 1. **compare** the pair of `Compare` arrays line-by-line using the `diff-sequences` package
-2. **format** the corresponding lines in the pair of `Display` arrays using the `chalk` package
+2. **format** the corresponding lines in the pair of `Display` arrays using the `terminalStyles` package
 
 Jest calls this function to consider lines as common instead of changed if the only difference is indentation.
 
@@ -381,25 +381,25 @@ For other applications, you can provide an options object as a third argument:
 
 ### Properties of options object
 
-| name                              | default            |
-| :-------------------------------- | :----------------- |
-| `aAnnotation`                     | `'Expected'`       |
-| `aColor`                          | `chalk.green`      |
-| `aIndicator`                      | `'-'`              |
-| `bAnnotation`                     | `'Received'`       |
-| `bColor`                          | `chalk.red`        |
-| `bIndicator`                      | `'+'`              |
-| `changeColor`                     | `chalk.inverse`    |
-| `changeLineTrailingSpaceColor`    | `string => string` |
-| `commonColor`                     | `chalk.dim`        |
-| `commonIndicator`                 | `' '`              |
-| `commonLineTrailingSpaceColor`    | `string => string` |
-| `contextLines`                    | `5`                |
-| `emptyFirstOrLastLinePlaceholder` | `''`               |
-| `expand`                          | `true`             |
-| `includeChangeCounts`             | `false`            |
-| `omitAnnotationLines`             | `false`            |
-| `patchColor`                      | `chalk.yellow`     |
+| name                              | default                  |
+| :-------------------------------- | :----------------------- |
+| `aAnnotation`                     | `'Expected'`             |
+| `aColor`                          | `terminalStyles.success` |
+| `aIndicator`                      | `'-'`                    |
+| `bAnnotation`                     | `'Received'`             |
+| `bColor`                          | `terminalStyles.error`   |
+| `bIndicator`                      | `'+'`                    |
+| `changeColor`                     | `terminalStyles.inverse` |
+| `changeLineTrailingSpaceColor`    | `string => string`       |
+| `commonColor`                     | `terminalStyles.dim`     |
+| `commonIndicator`                 | `' '`                    |
+| `commonLineTrailingSpaceColor`    | `string => string`       |
+| `contextLines`                    | `5`                      |
+| `emptyFirstOrLastLinePlaceholder` | `''`                     |
+| `expand`                          | `true`                   |
+| `includeChangeCounts`             | `false`                  |
+| `omitAnnotationLines`             | `false`                  |
+| `patchColor`                      | `terminalStyles.warn`    |
 
 For more information about the options, see the following examples.
 
@@ -430,11 +430,11 @@ The `jest-diff` package does not assume that the 2 labels have equal length.
 For consistency with most diff tools, you might exchange the colors:
 
 ```js
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 const options = {
-  aColor: chalk.red,
-  bColor: chalk.green,
+  aColor: terminalStyles.error,
+  bColor: terminalStyles.success,
 };
 ```
 
@@ -443,10 +443,10 @@ const options = {
 Although the default inverse of foreground and background colors is hard to beat for changed substrings **within lines**, especially because it highlights spaces, if you want bold font weight on yellow background color:
 
 ```js
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 const options = {
-  changeColor: chalk.bold.bgYellowBright,
+  changeColor: terminalStyles.bold.bgYellowBright,
 };
 ```
 
@@ -459,9 +459,9 @@ Because the default export does not display substring differences within lines, 
 
 ```js
 const options = {
-  aColor: chalk.rgb(128, 0, 128).bgRgb(255, 215, 255), // magenta
-  bColor: chalk.rgb(0, 95, 0).bgRgb(215, 255, 215), // green
-  commonLineTrailingSpaceColor: chalk.bgYellow,
+  aColor: terminalStyles.rgb(128, 0, 128).bgRgb(255, 215, 255), // magenta
+  bColor: terminalStyles.rgb(0, 95, 0).bgRgb(215, 255, 215), // green
+  commonLineTrailingSpaceColor: terminalStyles.bgYellow,
 };
 ```
 
@@ -533,11 +533,11 @@ A patch mark like `@@ -12,7 +12,9 @@` accounts for omitted common lines.
 If you want patch marks to have the same dim color as common lines:
 
 ```js
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 const options = {
   expand: false,
-  patchColor: chalk.dim,
+  patchColor: terminalStyles.dim,
 };
 ```
 

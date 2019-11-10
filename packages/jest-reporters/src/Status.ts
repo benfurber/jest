@@ -7,7 +7,7 @@
 
 import {Config} from '@jest/types';
 import {AggregatedResult, TestResult} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import stringLength = require('string-length');
 import {ReporterOnStartOptions} from './types';
 import {
@@ -18,7 +18,7 @@ import {
 } from './utils';
 
 const RUNNING_TEXT = ' RUNS ';
-const RUNNING = chalk.reset.inverse.yellow.bold(RUNNING_TEXT) + ' ';
+const RUNNING = terminalStyles.warnBanner(RUNNING_TEXT) + ' ';
 
 /**
  * This class is a perf optimization for sorting the list of currently

@@ -8,7 +8,7 @@
 import * as path from 'path';
 import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import slash = require('slash');
 import {pluralize} from 'jest-util';
 import {SummaryOptions} from './types';
@@ -17,20 +17,22 @@ const PROGRESS_BAR_WIDTH = 40;
 
 export const printDisplayName = (config: Config.ProjectConfig) => {
   const {displayName} = config;
-  const white = chalk.reset.inverse.white;
+  const white = terminalStyles.reset.inverse.white;
   if (!displayName) {
     return '';
   }
 
   if (typeof displayName === 'string') {
-    return chalk.supportsColor ? white(` ${displayName} `) : displayName;
+    return terminalStyles.supportsColor
+      ? white(` ${displayName} `)
+      : displayName;
   }
 
   const {name, color} = displayName;
-  const chosenColor = chalk.reset.inverse[color]
-    ? chalk.reset.inverse[color]
+  const chosenColor = terminalStyles.reset.inverse[color]
+    ? terminalStyles.reset.inverse[color]
     : white;
-  return chalk.supportsColor ? chosenColor(` ${name} `) : name;
+  return terminalStyles.supportsColor ? chosenColor(` ${name} `) : name;
 };
 
 export const trimAndFormatPath = (
@@ -46,7 +48,9 @@ export const trimAndFormatPath = (
 
   // length is ok
   if ((dirname + path.sep + basename).length <= maxLength) {
-    return slash(chalk.dim(dirname + path.sep) + chalk.bold(basename));
+    return slash(
+      terminalStyles.dim(dirname + path.sep) + terminalStyles.bold(basename),
+    );
   }
 
   // we can fit trimmed dirname and full basename
@@ -55,16 +59,20 @@ export const trimAndFormatPath = (
     const dirnameLength = maxLength - 4 - basenameLength;
     dirname =
       '...' + dirname.slice(dirname.length - dirnameLength, dirname.length);
-    return slash(chalk.dim(dirname + path.sep) + chalk.bold(basename));
+    return slash(
+      terminalStyles.dim(dirname + path.sep) + terminalStyles.bold(basename),
+    );
   }
 
   if (basenameLength + 4 === maxLength) {
-    return slash(chalk.dim('...' + path.sep) + chalk.bold(basename));
+    return slash(
+      terminalStyles.dim('...' + path.sep) + terminalStyles.bold(basename),
+    );
   }
 
   // can't fit dirname, but can fit trimmed basename
   return slash(
-    chalk.bold(
+    terminalStyles.bold(
       '...' + basename.slice(basename.length - maxLength - 4, basename.length),
     ),
   );
@@ -75,7 +83,9 @@ export const formatTestPath = (
   testPath: Config.Path,
 ) => {
   const {dirname, basename} = relativePath(config, testPath);
-  return slash(chalk.dim(dirname + path.sep) + chalk.bold(basename));
+  return slash(
+    terminalStyles.dim(dirname + path.sep) + terminalStyles.bold(basename),
+  );
 };
 
 export const relativePath = (
@@ -126,54 +136,64 @@ export const getSummary = (
   const width = (options && options.width) || 0;
 
   const suites =
-    chalk.bold('Test Suites: ') +
-    (suitesFailed ? chalk.bold.red(`${suitesFailed} failed`) + ', ' : '') +
-    (suitesPending
-      ? chalk.bold.yellow(`${suitesPending} skipped`) + ', '
+    terminalStyles.bold('Test Suites: ') +
+    (suitesFailed
+      ? terminalStyles.errorBold(`${suitesFailed} failed`) + ', '
       : '') +
-    (suitesPassed ? chalk.bold.green(`${suitesPassed} passed`) + ', ' : '') +
+    (suitesPending
+      ? terminalStyles.warnBold(`${suitesPending} skipped`) + ', '
+      : '') +
+    (suitesPassed
+      ? terminalStyles.successBold(`${suitesPassed} passed`) + ', '
+      : '') +
     (suitesRun !== suitesTotal
       ? suitesRun + ' of ' + suitesTotal
       : suitesTotal) +
     ` total`;
 
   const tests =
-    chalk.bold('Tests:       ') +
-    (testsFailed ? chalk.bold.red(`${testsFailed} failed`) + ', ' : '') +
-    (testsPending ? chalk.bold.yellow(`${testsPending} skipped`) + ', ' : '') +
-    (testsTodo ? chalk.bold.magenta(`${testsTodo} todo`) + ', ' : '') +
-    (testsPassed ? chalk.bold.green(`${testsPassed} passed`) + ', ' : '') +
+    terminalStyles.bold('Tests:       ') +
+    (testsFailed
+      ? terminalStyles.errorBold(`${testsFailed} failed`) + ', '
+      : '') +
+    (testsPending
+      ? terminalStyles.warnBold(`${testsPending} skipped`) + ', '
+      : '') +
+    (testsTodo ? terminalStyles.bold.magenta(`${testsTodo} todo`) + ', ' : '') +
+    (testsPassed
+      ? terminalStyles.successBold(`${testsPassed} passed`) + ', '
+      : '') +
     `${testsTotal} total`;
 
   const snapshots =
-    chalk.bold('Snapshots:   ') +
+    terminalStyles.bold('Snapshots:   ') +
     (snapshotsFailed
-      ? chalk.bold.red(`${snapshotsFailed} failed`) + ', '
+      ? terminalStyles.errorBold(`${snapshotsFailed} failed`) + ', '
       : '') +
     (snapshotsOutdated && !snapshotsDidUpdate
-      ? chalk.bold.yellow(`${snapshotsOutdated} obsolete`) + ', '
+      ? terminalStyles.warnBold(`${snapshotsOutdated} obsolete`) + ', '
       : '') +
     (snapshotsOutdated && snapshotsDidUpdate
-      ? chalk.bold.green(`${snapshotsOutdated} removed`) + ', '
+      ? terminalStyles.successBold(`${snapshotsOutdated} removed`) + ', '
       : '') +
     (snapshotsFilesRemoved && !snapshotsDidUpdate
-      ? chalk.bold.yellow(
+      ? terminalStyles.warnBold(
           pluralize('file', snapshotsFilesRemoved) + ' obsolete',
         ) + ', '
       : '') +
     (snapshotsFilesRemoved && snapshotsDidUpdate
-      ? chalk.bold.green(
+      ? terminalStyles.successBold(
           pluralize('file', snapshotsFilesRemoved) + ' removed',
         ) + ', '
       : '') +
     (snapshotsUpdated
-      ? chalk.bold.green(`${snapshotsUpdated} updated`) + ', '
+      ? terminalStyles.successBold(`${snapshotsUpdated} updated`) + ', '
       : '') +
     (snapshotsAdded
-      ? chalk.bold.green(`${snapshotsAdded} written`) + ', '
+      ? terminalStyles.successBold(`${snapshotsAdded} written`) + ', '
       : '') +
     (snapshotsPassed
-      ? chalk.bold.green(`${snapshotsPassed} passed`) + ', '
+      ? terminalStyles.successBold(`${snapshotsPassed} passed`) + ', '
       : '') +
     `${snapshotsTotal} total`;
 
@@ -185,9 +205,9 @@ const renderTime = (runTime: number, estimatedTime: number, width: number) => {
   // If we are more than one second over the estimated time, highlight it.
   const renderedTime =
     estimatedTime && runTime >= estimatedTime + 1
-      ? chalk.bold.yellow(runTime + 's')
+      ? terminalStyles.warnBold(runTime + 's')
       : runTime + 's';
-  let time = chalk.bold(`Time:`) + `        ${renderedTime}`;
+  let time = terminalStyles.bold(`Time:`) + `        ${renderedTime}`;
   if (runTime < estimatedTime) {
     time += `, estimated ${estimatedTime}s`;
   }
@@ -203,8 +223,8 @@ const renderTime = (runTime: number, estimatedTime: number, width: number) => {
     if (availableWidth >= 2) {
       time +=
         '\n' +
-        chalk.green('█').repeat(length) +
-        chalk.white('█').repeat(availableWidth - length);
+        terminalStyles.success('█').repeat(length) +
+        terminalStyles.white('█').repeat(availableWidth - length);
     }
   }
   return time;

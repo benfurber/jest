@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 
 const activeFilters = (
@@ -16,16 +16,18 @@ const activeFilters = (
   if (testNamePattern || testPathPattern) {
     const filters = [
       testPathPattern
-        ? chalk.dim('filename ') + chalk.yellow('/' + testPathPattern + '/')
+        ? terminalStyles.dim('filename ') +
+          terminalStyles.warn('/' + testPathPattern + '/')
         : null,
       testNamePattern
-        ? chalk.dim('test name ') + chalk.yellow('/' + testNamePattern + '/')
+        ? terminalStyles.dim('test name ') +
+          terminalStyles.warn('/' + testNamePattern + '/')
         : null,
     ]
       .filter(f => f)
       .join(', ');
 
-    const messages = ['\n' + chalk.bold('Active Filters: ') + filters];
+    const messages = ['\n' + terminalStyles.bold('Active Filters: ') + filters];
 
     return messages.filter(message => !!message).join(delimiter);
   }

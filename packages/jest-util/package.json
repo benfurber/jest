@@ -10,8 +10,9 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@jest/styles": "^24.9.0",
     "@jest/types": "^24.9.0",
-    "chalk": "^2.0.1",
+    "jest-config": "^24.9.0",
     "is-ci": "^2.0.0",
     "mkdirp": "^0.5.1"
   },

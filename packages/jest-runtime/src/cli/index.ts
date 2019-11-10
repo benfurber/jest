@@ -7,15 +7,15 @@
 
 import {cpus} from 'os';
 import * as path from 'path';
-import chalk from 'chalk';
+import {deprecationEntries, readConfig} from 'jest-config';
 import {sync as realpath} from 'realpath-native';
 import yargs = require('yargs');
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {JestEnvironment} from '@jest/environment';
 import {CustomConsole} from '@jest/console';
 import {setGlobal} from 'jest-util';
 import {validateCLIOptions} from 'jest-validate';
-import {deprecationEntries, readConfig} from 'jest-config';
 import {VERSION} from '../version';
 import {Context} from '../types';
 import * as args from './args';
@@ -96,7 +96,7 @@ export function run(cliArgv?: Config.Argv, cliInfo?: Array<string>) {
       runtime.requireModule(filePath);
     })
     .catch(e => {
-      console.error(chalk.red(e.stack || e));
+      console.error(terminalStyles.error(e.stack || e));
       process.on('exit', () => (process.exitCode = 1));
     });
 }

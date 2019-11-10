@@ -40,7 +40,17 @@ jest.mock(
     },
 );
 
-jest.doMock('chalk', () => new chalk.constructor({enabled: false}));
+// Mocking with chalk directly is required as the enabled option is not
+// currently exposed in v3 of chalk that terminalStyles uses.
+const chalkInstance = new chalk.constructor({enabled: false});
+chalkInstance.error = string => chalkInstance.red(string);
+chalkInstance.errorBold = string => chalkInstance.bold.red(string);
+chalkInstance.warn = string => chalkInstance.yellow(string);
+
+jest.doMock('@jest/styles', () => ({
+  __esModule: true,
+  terminalStyles: chalkInstance,
+}));
 
 jest.doMock('strip-ansi');
 require('strip-ansi').mockImplementation(str => str);

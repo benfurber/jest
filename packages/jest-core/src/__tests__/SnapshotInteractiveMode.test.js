@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+// eslint-disable-next-line no-unused-vars
+import {terminalStyles} from '@jest/styles';
 import {KEYS} from 'jest-watcher';
 import SnapshotInteractiveMode from '../SnapshotInteractiveMode';
 
@@ -25,12 +26,6 @@ jest
       specialChars: {...specialChars, CLEAR: '[MOCK - clear]'},
     };
   });
-
-jest.doMock('chalk', () =>
-  Object.assign(new chalk.constructor({enabled: false}), {
-    stripColor: str => str,
-  }),
-);
 
 describe('SnapshotInteractiveMode', () => {
   let pipe;

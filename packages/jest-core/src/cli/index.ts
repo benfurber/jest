@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {AggregatedResult} from '@jest/test-result';
 import {CustomConsole} from '@jest/console';
@@ -13,7 +14,6 @@ import {readConfigs} from 'jest-config';
 import Runtime = require('jest-runtime');
 import {ChangedFilesPromise} from 'jest-changed-files';
 import HasteMap = require('jest-haste-map');
-import chalk from 'chalk';
 import rimraf = require('rimraf');
 import exit = require('exit');
 import {Filter} from '../types';
@@ -101,7 +101,7 @@ export const runCLI = async (
     const openHandlesString = pluralize('open handle', formatted.length, 's');
 
     const message =
-      chalk.red(
+      terminalStyles.error(
         `\nJest has detected the following ${openHandlesString} potentially keeping Jest from exiting:\n\n`,
       ) + formatted.join('\n\n');
 

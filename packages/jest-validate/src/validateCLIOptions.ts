@@ -6,7 +6,7 @@
  */
 
 import {Config} from '@jest/types';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import camelcase from 'camelcase';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {Options} from 'yargs';
@@ -15,8 +15,10 @@ import {deprecationWarning} from './deprecated';
 import defaultConfig from './defaultConfig';
 import {DeprecatedOptions} from './types';
 
-const BULLET: string = chalk.bold('\u25cf');
-export const DOCUMENTATION_NOTE = `  ${chalk.bold('CLI Options Documentation:')}
+const BULLET: string = terminalStyles.bold('\u25cf');
+export const DOCUMENTATION_NOTE = `  ${terminalStyles.bold(
+  'CLI Options Documentation:',
+)}
   https://jestjs.io/docs/en/cli.html
 `;
 
@@ -27,7 +29,7 @@ const createCLIValidationError = (
   let title = `${BULLET} Unrecognized CLI Parameter`;
   let message;
   const comment =
-    `  ${chalk.bold('CLI Options Documentation')}:\n` +
+    `  ${terminalStyles.bold('CLI Options Documentation')}:\n` +
     `  https://jestjs.io/docs/en/cli.html\n`;
 
   if (unrecognizedOptions.length === 1) {
@@ -37,13 +39,13 @@ const createCLIValidationError = (
       Array.from(allowedOptions),
     );
     message =
-      `  Unrecognized option ${chalk.bold(format(unrecognized))}.` +
+      `  Unrecognized option ${terminalStyles.bold(format(unrecognized))}.` +
       (didYouMeanMessage ? ` ${didYouMeanMessage}` : '');
   } else {
     title += 's';
     message =
       `  Following options were not recognized:\n` +
-      `  ${chalk.bold(format(unrecognizedOptions))}`;
+      `  ${terminalStyles.bold(format(unrecognizedOptions))}`;
   }
 
   return new ValidationError(title, message, comment);

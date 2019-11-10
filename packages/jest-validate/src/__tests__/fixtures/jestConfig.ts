@@ -7,7 +7,7 @@
 
 import {tmpdir} from 'os';
 import * as path from 'path';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 const NODE_MODULES = path.sep + 'node_modules' + path.sep;
 const replacePathSepForRegex = (string: string) => {
@@ -46,6 +46,7 @@ const defaultConfig = {
   restoreMocks: false,
   roots: ['<rootDir>'],
   snapshotSerializers: [],
+  styleTerminal: true,
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: [NODE_MODULES_REGEXP],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$',
@@ -109,6 +110,7 @@ const validConfig = {
   setupFilesAfterEnv: ['<rootDir>/testSetupFile.js'],
   silent: true,
   snapshotSerializers: ['my-serializer-module'],
+  styleTerminal: true,
   testEnvironment: 'jest-environment-jsdom',
   testNamePattern: 'test signature',
   testPathIgnorePatterns: [NODE_MODULES_REGEXP],
@@ -134,15 +136,15 @@ const format = (value: string) => require('pretty-format')(value, {min: true});
 
 const deprecatedConfig = {
   preprocessorIgnorePatterns: (config: Record<string, any>) =>
-    `  Option ${chalk.bold(
+    `  Option ${terminalStyles.bold(
       'preprocessorIgnorePatterns',
-    )} was replaced by ${chalk.bold(
+    )} was replaced by ${terminalStyles.bold(
       'transformIgnorePatterns',
     )}, which support multiple preprocessors.
 
   Jest now treats your current configuration as:
   {
-    ${chalk.bold('"transformIgnorePatterns"')}: ${chalk.bold(
+    ${terminalStyles.bold('"transformIgnorePatterns"')}: ${terminalStyles.bold(
       `${format(config.preprocessorIgnorePatterns)}`,
     )}
   }
@@ -150,13 +152,15 @@ const deprecatedConfig = {
   Please update your configuration.`,
 
   scriptPreprocessor: (config: Record<string, any>) =>
-    `  Option ${chalk.bold('scriptPreprocessor')} was replaced by ${chalk.bold(
+    `  Option ${terminalStyles.bold(
+      'scriptPreprocessor',
+    )} was replaced by ${terminalStyles.bold(
       'transform',
     )}, which support multiple preprocessors.
 
   Jest now treats your current configuration as:
   {
-    ${chalk.bold('"transform"')}: ${chalk.bold(
+    ${terminalStyles.bold('"transform"')}: ${terminalStyles.bold(
       `{".*": ${format(config.scriptPreprocessor)}}`,
     )}
   }

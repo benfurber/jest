@@ -6,8 +6,8 @@
  */
 
 import * as path from 'path';
-import chalk from 'chalk';
 import slash = require('slash');
+import {terminalStyles} from '@jest/styles';
 import {ConsoleBuffer} from './types';
 
 export default (root: string, verbose: boolean, buffer: ConsoleBuffer) => {
@@ -23,19 +23,19 @@ export default (root: string, verbose: boolean, buffer: ConsoleBuffer) => {
 
     let typeMessage = 'console.' + type;
     if (type === 'warn') {
-      message = chalk.yellow(message);
-      typeMessage = chalk.yellow(typeMessage);
+      message = terminalStyles.warn(message);
+      typeMessage = terminalStyles.warn(typeMessage);
     } else if (type === 'error') {
-      message = chalk.red(message);
-      typeMessage = chalk.red(typeMessage);
+      message = terminalStyles.error(message);
+      typeMessage = terminalStyles.error(typeMessage);
     }
 
     return (
       output +
       TITLE_INDENT +
-      chalk.dim(typeMessage) +
+      terminalStyles.dim(typeMessage) +
       ' ' +
-      chalk.dim(origin) +
+      terminalStyles.dim(origin) +
       '\n' +
       message +
       '\n'

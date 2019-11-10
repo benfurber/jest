@@ -391,7 +391,7 @@ exports[`options trailingSpaceFormatter diffDefault yellowish common 1`] = `
 
 <g>- delete 1 trailing space: </>
 <r>+ delete 1 trailing space:</>
-<d>  common 2 trailing spaces:<Y>  </></>
+<d>  common 2 trailing spaces:[0m<i><b><y>  </></><d></i>[0m</>
 <g>- insert 1 trailing space:</>
 <r>+ insert 1 trailing space: </>
 `;

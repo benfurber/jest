@@ -11,7 +11,7 @@ import {AggregatedResult, TestResult} from '@jest/test-result';
 import {clearLine, isInteractive} from 'jest-util';
 import istanbulReport = require('istanbul-lib-report');
 import istanbulReports = require('istanbul-reports');
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import istanbulCoverage = require('istanbul-lib-coverage');
 import libSourceMaps = require('istanbul-lib-source-maps');
 import Worker from 'jest-worker';
@@ -20,8 +20,8 @@ import {RawSourceMap} from 'source-map';
 import BaseReporter from './base_reporter';
 import {Context, CoverageReporterOptions, CoverageWorker, Test} from './types';
 
-const FAIL_COLOR = chalk.bold.red;
-const RUNNING_TEST_COLOR = chalk.bold.dim;
+const FAIL_COLOR = terminalStyles.errorBold;
+const RUNNING_TEST_COLOR = terminalStyles.bold.dim;
 
 export default class CoverageReporter extends BaseReporter {
   private _coverageMap: istanbulCoverage.CoverageMap;
@@ -99,7 +99,7 @@ export default class CoverageReporter extends BaseReporter {
       aggregatedResults.coverageMap = map;
     } catch (e) {
       console.error(
-        chalk.red(`
+        terminalStyles.error(`
         Failed to write coverage reports:
         ERROR: ${e.toString()}
         STACK: ${e.stack}
@@ -182,7 +182,7 @@ export default class CoverageReporter extends BaseReporter {
           }
         } catch (error) {
           console.error(
-            chalk.red(
+            terminalStyles.error(
               [
                 `Failed to collect coverage from ${filename}`,
                 `ERROR: ${error.message}`,

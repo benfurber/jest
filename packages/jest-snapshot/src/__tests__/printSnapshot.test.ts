@@ -7,7 +7,7 @@
 
 import ansiRegex = require('ansi-regex');
 import * as styles from 'ansi-styles';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import format = require('pretty-format');
 
 import jestSnapshot = require('../index');
@@ -776,7 +776,7 @@ describe('printSnapshotAndReceived', () => {
   describe('MAX_DIFF_STRING_LENGTH', () => {
     describe('unquoted', () => {
       // Do not call diffStringsUnified if either string is longer than max.
-      const lessChange = chalk.inverse('single ');
+      const lessChange = terminalStyles.inverse('single ');
       const less = 'single line';
       const more = 'multi line' + '\n123456789'.repeat(2000); // 10 + 20K chars
 
@@ -809,7 +809,7 @@ describe('printSnapshotAndReceived', () => {
 
     describe('quoted', () => {
       // Do not call diffStringsRaw if either string is longer than max.
-      const lessChange = chalk.inverse('no');
+      const lessChange = terminalStyles.inverse('no');
       const less = 'no numbers';
       const more = 'many numbers' + ' 123456789'.repeat(2000); // 12 + 20K chars
       const lessQuoted = '"' + less + '"';

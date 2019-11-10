@@ -11,9 +11,10 @@
   "types": "build/index.d.ts",
   "dependencies": {
     "@babel/types": "^7.0.0",
+    "@jest/styles": "^24.9.0",
     "@jest/types": "^24.9.0",
-    "chalk": "^2.0.1",
     "expect": "^24.9.0",
+    "jest-config": "^24.9.0",
     "jest-diff": "^24.9.0",
     "jest-get-type": "^24.9.0",
     "jest-matcher-utils": "^24.9.0",

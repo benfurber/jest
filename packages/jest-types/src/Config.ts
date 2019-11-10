@@ -82,6 +82,7 @@ export type DefaultOptions = {
   setupFilesAfterEnv: Array<Path>;
   skipFilter: boolean;
   snapshotSerializers: Array<Path>;
+  styleTerminal: boolean | terminalColors;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
   testFailureExitCode: string | number;
@@ -199,6 +200,7 @@ export type InitialOptions = Partial<{
   skipNodeResolution: boolean;
   snapshotResolver: Path;
   snapshotSerializers: Array<Path>;
+  styleTerminal: boolean | terminalColors;
   errorOnDeprecated: boolean;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
@@ -245,7 +247,7 @@ type NotifyMode =
  * https://github.com/chalk/chalk/pull/336
  * gets merged
  */
-type DisplayNameColor =
+export type DisplayNameColor =
   | 'black'
   | 'red'
   | 'green'
@@ -348,6 +350,7 @@ export type GlobalConfig = {
   rootDir: Path;
   silent: boolean;
   skipFilter: boolean;
+  styleTerminal: boolean | terminalColors;
   errorOnDeprecated: boolean;
   testFailureExitCode: number;
   testNamePattern: string;
@@ -411,6 +414,7 @@ export type ProjectConfig = {
   skipNodeResolution: boolean;
   snapshotResolver: Path | null | undefined;
   snapshotSerializers: Array<Path>;
+  styleTerminal: boolean | terminalColors;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
   testMatch: Array<Glob>;
@@ -489,6 +493,7 @@ export type Argv = Arguments<
     showConfig: boolean;
     silent: boolean;
     snapshotSerializers: Array<string>;
+    styleTerminal: boolean | terminalColors;
     testEnvironment: string;
     testFailureExitCode: string | null | undefined;
     testMatch: Array<string>;
@@ -515,3 +520,11 @@ export type Argv = Arguments<
     watchPathIgnorePatterns: Array<string>;
   }>
 >;
+
+export interface terminalColors {
+  error: DisplayNameColor;
+  highlight: DisplayNameColor;
+  message: DisplayNameColor;
+  success: DisplayNameColor;
+  warn: DisplayNameColor;
+}

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {ValidationOptions} from './types';
 import {
   WARNING,
@@ -26,9 +26,9 @@ export const unknownOptionWarning = (
     Object.keys(exampleConfig),
   );
   const message =
-    `  Unknown option ${chalk.bold(
+    `  Unknown option ${terminalStyles.bold(
       `"${path && path.length > 0 ? path.join('.') + '.' : ''}${option}"`,
-    )} with value ${chalk.bold(format(config[option]))} was found.` +
+    )} with value ${terminalStyles.bold(format(config[option]))} was found.` +
     (didYouMean && ` ${didYouMean}`) +
     `\n  This is probably a typing mistake. Fixing it will remove this message.`;
 

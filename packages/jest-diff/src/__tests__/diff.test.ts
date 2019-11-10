@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import stripAnsi from 'strip-ansi';
 import {alignedAnsiStyleSerializer} from '@jest/test-utils';
 
@@ -718,7 +718,7 @@ describe('context', () => {
         expand: false,
       };
       if (!validContextLines) {
-        options.patchColor = chalk.dim;
+        options.patchColor = terminalStyles.dim;
       }
 
       const result = diff(
@@ -940,9 +940,9 @@ describe('options 7980', () => {
 
   const options = {
     aAnnotation: 'Original',
-    aColor: chalk.red,
+    aColor: terminalStyles.error,
     bAnnotation: 'Modified',
-    bColor: chalk.green,
+    bColor: terminalStyles.success,
   };
 
   test('diff', () => {
@@ -974,7 +974,7 @@ describe('options', () => {
 
   describe('change color', () => {
     const options = {
-      changeColor: chalk.bold,
+      changeColor: terminalStyles.bold,
     };
 
     test('diffStringsUnified', () => {
@@ -1081,7 +1081,7 @@ describe('options', () => {
 
     test('diffDefault yellowish common', () => {
       const options = {
-        commonLineTrailingSpaceColor: chalk.bgYellow,
+        commonLineTrailingSpaceColor: terminalStyles.warnBanner,
       };
 
       expect(diff(aTrailingSpaces, bTrailingSpaces, options)).toMatchSnapshot();

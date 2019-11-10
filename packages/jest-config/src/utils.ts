@@ -9,7 +9,7 @@ import * as path from 'path';
 import {Config} from '@jest/types';
 import {ValidationError} from 'jest-validate';
 import Resolver = require('jest-resolve');
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 type ResolveOptions = {
   rootDir: Config.Path;
@@ -18,8 +18,8 @@ type ResolveOptions = {
   optional?: boolean;
 };
 
-export const BULLET: string = chalk.bold('\u25cf ');
-export const DOCUMENTATION_NOTE = `  ${chalk.bold(
+export const BULLET: string = terminalStyles.bold('\u25cf ');
+export const DOCUMENTATION_NOTE = `  ${terminalStyles.bold(
   'Configuration Documentation:',
 )}
   https://jestjs.io/docs/configuration.html
@@ -42,10 +42,10 @@ export const resolve = (
 
   if (!module && !optional) {
     throw createValidationError(
-      `  Module ${chalk.bold(filePath)} in the ${chalk.bold(
+      `  Module ${terminalStyles.bold(filePath)} in the ${terminalStyles.bold(
         key,
       )} option was not found.
-         ${chalk.bold('<rootDir>')} is: ${rootDir}`,
+         ${terminalStyles.bold('<rootDir>')} is: ${rootDir}`,
     );
   }
   /// can cast as string since nulls will be thrown
@@ -159,9 +159,9 @@ export const resolveWithPrefix = (
   } catch (e) {}
 
   throw createValidationError(
-    `  ${humanOptionName} ${chalk.bold(
+    `  ${humanOptionName} ${terminalStyles.bold(
       fileName,
-    )} cannot be found. Make sure the ${chalk.bold(
+    )} cannot be found. Make sure the ${terminalStyles.bold(
       optionName,
     )} configuration option points to an existing node module.`,
   );

@@ -6,7 +6,7 @@
  */
 
 import * as path from 'path';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {sync as realpath} from 'realpath-native';
 import {CustomConsole} from '@jest/console';
 import {interopRequireDefault} from 'jest-util';
@@ -160,7 +160,7 @@ export default (async function runJest({
     if (noSCM) {
       process.stderr.write(
         '\n' +
-          chalk.bold('--watch') +
+          terminalStyles.bold('--watch') +
           ' is not supported without git/hg, please use --watchAll ' +
           '\n',
       );

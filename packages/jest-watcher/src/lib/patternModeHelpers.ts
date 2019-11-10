@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import ansiEscapes = require('ansi-escapes');
 import stringLength = require('string-length');
 
@@ -13,7 +13,7 @@ export const printPatternCaret = (
   pattern: string,
   pipe: NodeJS.WritableStream,
 ) => {
-  const inputText = `${chalk.dim(' pattern \u203A')} ${pattern}`;
+  const inputText = `${terminalStyles.dim(' pattern \u203A')} ${pattern}`;
 
   pipe.write(ansiEscapes.eraseDown);
   pipe.write(inputText);
@@ -25,7 +25,7 @@ export const printRestoredPatternCaret = (
   currentUsageRows: number,
   pipe: NodeJS.WritableStream,
 ) => {
-  const inputText = `${chalk.dim(' pattern \u203A')} ${pattern}`;
+  const inputText = `${terminalStyles.dim(' pattern \u203A')} ${pattern}`;
 
   pipe.write(
     ansiEscapes.cursorTo(stringLength(inputText), currentUsageRows - 1),

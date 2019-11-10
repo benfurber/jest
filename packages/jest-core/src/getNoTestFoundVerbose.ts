@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import pluralize from './pluralize';
 import {Stats, TestRunData} from './types';
@@ -28,7 +28,7 @@ export default function getNoTestFoundVerbose(
             ? value.join(', ')
             : String(value);
           const matches = pluralize('match', stats[key] || 0, 'es');
-          return `  ${key}: ${chalk.yellow(valueAsString)} - ${matches}`;
+          return `  ${key}: ${terminalStyles.warn(valueAsString)} - ${matches}`;
         }
         return null;
       })
@@ -36,7 +36,7 @@ export default function getNoTestFoundVerbose(
       .join('\n');
 
     return testRun.matches.total
-      ? `In ${chalk.bold(config.rootDir)}\n` +
+      ? `In ${terminalStyles.bold(config.rootDir)}\n` +
           `  ${pluralize('file', testRun.matches.total || 0, 's')} checked.\n` +
           statsMessage
       : `No files found in ${config.rootDir}.\n` +
@@ -52,13 +52,13 @@ export default function getNoTestFoundVerbose(
       .map(p => `"${p}"`)
       .join(', ')}`;
   } else {
-    dataMessage = `Pattern: ${chalk.yellow(
+    dataMessage = `Pattern: ${terminalStyles.warn(
       globalConfig.testPathPattern,
     )} - 0 matches`;
   }
 
   return (
-    chalk.bold('No tests found, exiting with code 1') +
+    terminalStyles.bold('No tests found, exiting with code 1') +
     '\n' +
     'Run with `--passWithNoTests` to exit with code 0' +
     '\n' +

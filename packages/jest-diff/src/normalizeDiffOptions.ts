@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 import {DiffOptions, DiffOptionsNormalized} from './types';
 
@@ -15,14 +15,14 @@ const DIFF_CONTEXT_DEFAULT = 5;
 
 const OPTIONS_DEFAULT: DiffOptionsNormalized = {
   aAnnotation: 'Expected',
-  aColor: chalk.green,
+  aColor: terminalStyles.success,
   aIndicator: '-',
   bAnnotation: 'Received',
-  bColor: chalk.red,
+  bColor: terminalStyles.error,
   bIndicator: '+',
-  changeColor: chalk.inverse,
+  changeColor: terminalStyles.inverse,
   changeLineTrailingSpaceColor: noColor,
-  commonColor: chalk.dim,
+  commonColor: terminalStyles.dim,
   commonIndicator: ' ',
   commonLineTrailingSpaceColor: noColor,
   contextLines: DIFF_CONTEXT_DEFAULT,
@@ -30,7 +30,7 @@ const OPTIONS_DEFAULT: DiffOptionsNormalized = {
   expand: true,
   includeChangeCounts: false,
   omitAnnotationLines: false,
-  patchColor: chalk.yellow,
+  patchColor: terminalStyles.warn,
 };
 
 const getContextLines = (contextLines?: number): number =>

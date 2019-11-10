@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import diffDefault, {
   DIFF_DELETE,
   DIFF_EQUAL,
@@ -36,7 +36,7 @@ const PLUGINS = [
   AsymmetricMatcher,
 ];
 
-type MatcherHintColor = (arg: string) => string; // subset of Chalk type
+type MatcherHintColor = (arg: string) => string; // subset of terminalStyles type
 
 export type MatcherHintOptions = {
   comment?: string;
@@ -51,11 +51,11 @@ export type MatcherHintOptions = {
 
 export type DiffOptions = ImportDiffOptions;
 
-export const EXPECTED_COLOR = chalk.green;
-export const RECEIVED_COLOR = chalk.red;
-export const INVERTED_COLOR = chalk.inverse;
-export const BOLD_WEIGHT = chalk.bold;
-export const DIM_COLOR = chalk.dim;
+export const EXPECTED_COLOR: any = terminalStyles.success;
+export const RECEIVED_COLOR: any = terminalStyles.error;
+export const INVERTED_COLOR: any = terminalStyles.inverse;
+export const BOLD_WEIGHT: any = terminalStyles.bold;
+export const DIM_COLOR: any = terminalStyles.dim;
 
 const MULTILINE_REGEXP = /\n/;
 const SPACE_SYMBOL = '\u{00B7}'; // middle dot
@@ -77,7 +77,7 @@ const NUMBERS = [
   'thirteen',
 ];
 
-export const SUGGEST_TO_CONTAIN_EQUAL = chalk.dim(
+export const SUGGEST_TO_CONTAIN_EQUAL = terminalStyles.dim(
   'Looks like you wanted to test for object/array equality with the stricter `toContain` matcher. You probably need to use `toContainEqual` instead.',
 );
 
@@ -106,7 +106,7 @@ export const stringify = (object: unknown, maxDepth: number = 10): string => {
 };
 
 export const highlightTrailingWhitespace = (text: string): string =>
-  text.replace(/\s+$/gm, chalk.inverse('$&'));
+  text.replace(/\s+$/gm, terminalStyles.inverse('$&'));
 
 // Instead of inverse highlight which now implies a change,
 // replace common spaces with middle dot at the end of any line.
@@ -324,8 +324,8 @@ export const printDiffOrStringify = (
       return diffStringsUnified(expected, received, {
         aAnnotation: expectedLabel,
         bAnnotation: receivedLabel,
-        changeLineTrailingSpaceColor: chalk.bgYellow,
-        commonLineTrailingSpaceColor: chalk.bgYellow,
+        changeLineTrailingSpaceColor: terminalStyles.warnBanner,
+        commonLineTrailingSpaceColor: terminalStyles.warnBanner,
         emptyFirstOrLastLinePlaceholder: '↵', // U+21B5
         expand,
         includeChangeCounts: true,
@@ -420,7 +420,7 @@ export const matcherErrorMessage = (
   generic: string, // condition which correct value must fulfill
   specific?: string, // incorrect value returned from call to printWithType
 ) =>
-  `${hint}\n\n${chalk.bold('Matcher error')}: ${generic}${
+  `${hint}\n\n${terminalStyles.bold('Matcher error')}: ${generic}${
     typeof specific === 'string' ? '\n\n' + specific : ''
   }`;
 

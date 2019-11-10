@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 
 export default function getNoTestFoundFailed() {
   return (
-    chalk.bold('No failed test found.\n') +
-    chalk.dim('Press `f` to quit "only failed tests" mode.')
+    terminalStyles.bold('No failed test found.\n') +
+    terminalStyles.dim('Press `f` to quit "only failed tests" mode.')
   );
 }

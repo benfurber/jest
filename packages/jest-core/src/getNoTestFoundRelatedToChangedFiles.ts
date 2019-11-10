@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {Config} from '@jest/types';
 import {isInteractive} from 'jest-util';
 
@@ -15,10 +15,12 @@ export default function getNoTestFoundRelatedToChangedFiles(
   const ref = globalConfig.changedSince
     ? `"${globalConfig.changedSince}"`
     : 'last commit';
-  let msg = chalk.bold(`No tests found related to files changed since ${ref}.`);
+  let msg = terminalStyles.bold(
+    `No tests found related to files changed since ${ref}.`,
+  );
 
   if (isInteractive) {
-    msg += chalk.dim(
+    msg += terminalStyles.dim(
       '\n' +
         (globalConfig.watch
           ? 'Press `a` to run all tests, or run Jest with `--watchAll`.'

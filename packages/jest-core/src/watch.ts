@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import ansiEscapes = require('ansi-escapes');
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import exit = require('exit');
 import slash = require('slash');
 import HasteMap = require('jest-haste-map');
@@ -184,7 +184,7 @@ export default function watch(
         });
       } catch (error) {
         const errorWithContext = new Error(
-          `Failed to initialize watch plugin "${chalk.bold(
+          `Failed to initialize watch plugin "${terminalStyles.bold(
             slash(path.relative(process.cwd(), pluginWithConfig.path)),
           )}":\n\n${formatExecError(error, contexts[0].config, {
             noStackTrace: false,
@@ -476,19 +476,18 @@ const checkForConflicts = (
   let error;
   if (conflictor.forbiddenOverwriteMessage) {
     error = `
-  Watch plugin ${chalk.bold.red(
-    getPluginIdentifier(plugin),
-  )} attempted to register key ${chalk.bold.red(`<${key}>`)},
-  that is reserved internally for ${chalk.bold.red(
+  Watch plugin ${terminalStyles.errorBold(getPluginIdentifier(plugin))} 
+  attempted to register key ${terminalStyles.errorBold(`<${key}>`)},
+  that is reserved internally for ${terminalStyles.errorBold(
     conflictor.forbiddenOverwriteMessage,
   )}.
   Please change the configuration key for this plugin.`.trim();
   } else {
     const plugins = [conflictor.plugin, plugin]
-      .map(p => chalk.bold.red(getPluginIdentifier(p)))
+      .map(p => terminalStyles.errorBold(getPluginIdentifier(p)))
       .join(' and ');
     error = `
-  Watch plugins ${plugins} both attempted to register key ${chalk.bold.red(
+  Watch plugins ${plugins} both attempted to register key ${terminalStyles.errorBold(
       `<${key}>`,
     )}.
   Please change the key configuration for one of the conflicting plugins to avoid overlap.`.trim();
@@ -525,43 +524,47 @@ const usage = (
     activeFilters(globalConfig),
 
     globalConfig.testPathPattern || globalConfig.testNamePattern
-      ? chalk.dim(' \u203A Press ') + 'c' + chalk.dim(' to clear filters.')
+      ? terminalStyles.dim(' \u203A Press ') +
+        'c' +
+        terminalStyles.dim(' to clear filters.')
       : null,
-    '\n' + chalk.bold('Watch Usage'),
+    '\n' + terminalStyles.bold('Watch Usage'),
 
     globalConfig.watch
-      ? chalk.dim(' \u203A Press ') + 'a' + chalk.dim(' to run all tests.')
+      ? terminalStyles.dim(' \u203A Press ') +
+        'a' +
+        terminalStyles.dim(' to run all tests.')
       : null,
 
     globalConfig.onlyFailures
-      ? chalk.dim(' \u203A Press ') +
+      ? terminalStyles.dim(' \u203A Press ') +
         'f' +
-        chalk.dim(' to quit "only failed tests" mode.')
-      : chalk.dim(' \u203A Press ') +
+        terminalStyles.dim(' to quit "only failed tests" mode.')
+      : terminalStyles.dim(' \u203A Press ') +
         'f' +
-        chalk.dim(' to run only failed tests.'),
+        terminalStyles.dim(' to run only failed tests.'),
 
     (globalConfig.watchAll ||
       globalConfig.testPathPattern ||
       globalConfig.testNamePattern) &&
     !globalConfig.noSCM
-      ? chalk.dim(' \u203A Press ') +
+      ? terminalStyles.dim(' \u203A Press ') +
         'o' +
-        chalk.dim(' to only run tests related to changed files.')
+        terminalStyles.dim(' to only run tests related to changed files.')
       : null,
 
     ...getSortedUsageRows(watchPlugins, globalConfig).map(
       plugin =>
-        chalk.dim(' \u203A Press') +
+        terminalStyles.dim(' \u203A Press') +
         ' ' +
         plugin.key +
         ' ' +
-        chalk.dim(`to ${plugin.prompt}.`),
+        terminalStyles.dim(`to ${plugin.prompt}.`),
     ),
 
-    chalk.dim(' \u203A Press ') +
+    terminalStyles.dim(' \u203A Press ') +
       'Enter' +
-      chalk.dim(' to trigger a test run.'),
+      terminalStyles.dim(' to trigger a test run.'),
   ];
 
   return messages.filter(message => !!message).join(delimiter) + '\n';
@@ -569,7 +572,7 @@ const usage = (
 
 const showToggleUsagePrompt = () =>
   '\n' +
-  chalk.bold('Watch Usage: ') +
-  chalk.dim('Press ') +
+  terminalStyles.bold('Watch Usage: ') +
+  terminalStyles.dim('Press ') +
   'w' +
-  chalk.dim(' to show more.');
+  terminalStyles.dim(' to show more.');

@@ -6,14 +6,14 @@
  *
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import pretty = require('pretty-format');
 import {Global} from '@jest/types';
 
 type TemplateData = Global.TemplateData;
 
-const EXPECTED_COLOR = chalk.green;
-const RECEIVED_COLOR = chalk.red;
+const EXPECTED_COLOR = terminalStyles.success;
+const RECEIVED_COLOR = terminalStyles.error;
 
 export const validateArrayTable = (table: any) => {
   if (!Array.isArray(table)) {

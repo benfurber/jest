@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {bind as bindEach} from 'jest-each';
 import {formatExecError} from 'jest-message-util';
 import {ErrorWithStack, isPromise} from 'jest-util';
@@ -65,7 +65,7 @@ const _dispatchDescribe = (
     console.log(
       formatExecError(
         new ErrorWithStack(
-          chalk.yellow(
+          terminalStyles.warn(
             'Returning a Promise from "describe" is not supported. Tests must be defined synchronously.\n' +
               'Returning a value from "describe" will fail the test in a future version of Jest.',
           ),
@@ -79,7 +79,7 @@ const _dispatchDescribe = (
     console.log(
       formatExecError(
         new ErrorWithStack(
-          chalk.yellow(
+          terminalStyles.warn(
             'A "describe" callback must not return a value.\n' +
               'Returning a value from "describe" will fail the test in a future version of Jest.',
           ),

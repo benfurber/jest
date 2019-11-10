@@ -6,7 +6,7 @@
  */
 
 const util = require('util');
-const chalk = require('chalk');
+import {terminalStyles} from '@jest/styles';
 const React = require('react');
 const ReactTestRenderer = require('react-test-renderer');
 const prettyFormat = require('../build');
@@ -99,19 +99,19 @@ function test(name, value, ignoreResult, prettyFormatOpts) {
     message = ' ' + message + ' ';
 
     if (current.error) {
-      message = chalk.dim(message);
+      message = terminalStyles.dim(message);
     }
 
     const diff = current.time - winner.time;
 
     if (diff > winner.time * 0.85) {
-      message = chalk.bgRed.black(message);
+      message = terminalStyles.errorBanner(message);
     } else if (diff > winner.time * 0.65) {
-      message = chalk.bgYellow.black(message);
+      message = terminalStyles.warnBanner(message);
     } else if (!current.error) {
-      message = chalk.bgGreen.black(message);
+      message = terminalStyles.successBanner(message);
     } else {
-      message = chalk.dim(message);
+      message = terminalStyles.dim(message);
     }
 
     console.log('  ' + message);

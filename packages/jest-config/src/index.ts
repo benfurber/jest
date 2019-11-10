@@ -8,7 +8,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {Config} from '@jest/types';
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import {isJSONString, replaceRootDirInPath} from './utils';
 import normalize from './normalize';
 import resolveConfigPath from './resolveConfigPath';
@@ -144,6 +144,7 @@ const groupOptions = (
     runTestsByPath: options.runTestsByPath,
     silent: options.silent,
     skipFilter: options.skipFilter,
+    styleTerminal: options.styleTerminal,
     testFailureExitCode: options.testFailureExitCode,
     testNamePattern: options.testNamePattern,
     testPathPattern: options.testPathPattern,
@@ -199,6 +200,7 @@ const groupOptions = (
     skipNodeResolution: options.skipNodeResolution,
     snapshotResolver: options.snapshotResolver,
     snapshotSerializers: options.snapshotSerializers,
+    styleTerminal: options.styleTerminal,
     testEnvironment: options.testEnvironment,
     testEnvironmentOptions: options.testEnvironmentOptions,
     testLocationInResults: options.testLocationInResults,
@@ -229,16 +231,18 @@ const ensureNoDuplicateConfigs = (
     const {configPath} = config;
 
     if (configPathMap.has(configPath)) {
-      const message = `Whoops! Two projects resolved to the same config path: ${chalk.bold(
+      const message = `Whoops! Two projects resolved to the same config path: ${terminalStyles.bold(
         String(configPath),
       )}:
 
-  Project 1: ${chalk.bold(projects[parsedConfigs.findIndex(x => x === config)])}
-  Project 2: ${chalk.bold(
+  Project 1: ${terminalStyles.bold(
+    projects[parsedConfigs.findIndex(x => x === config)],
+  )}
+  Project 2: ${terminalStyles.bold(
     projects[parsedConfigs.findIndex(x => x === configPathMap.get(configPath))],
   )}
 
-This usually means that your ${chalk.bold(
+This usually means that your ${terminalStyles.bold(
         '"projects"',
       )} config includes a directory that doesn't have any configuration recognizable by Jest. Please fix it.
 `;

@@ -6,7 +6,7 @@
  */
 
 import prettyFormat = require('pretty-format');
-import chalk from 'chalk';
+import {terminalStyles} from '@jest/styles';
 import getType = require('jest-get-type');
 import {DIFF_DELETE, DIFF_EQUAL, DIFF_INSERT, Diff} from './cleanupSemantic';
 import {diffLinesRaw, diffLinesUnified, diffLinesUnified2} from './diffLines';
@@ -80,8 +80,8 @@ function diff(a: any, b: any, options?: DiffOptions): string | null {
   if (expectedType !== getType(b)) {
     return (
       '  Comparing two different types of values.' +
-      ` Expected ${chalk.green(expectedType)} but ` +
-      `received ${chalk.red(getType(b))}.`
+      ` Expected ${terminalStyles.success(expectedType)} but ` +
+      `received ${terminalStyles.error(getType(b))}.`
     );
   }
 
