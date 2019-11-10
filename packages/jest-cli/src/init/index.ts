@@ -112,7 +112,9 @@ export default async (rootDir: string = realpath(process.cwd())) => {
     fs.writeFileSync(projectPackageJsonPath, modifiedPackageJson);
 
     console.log('');
-    console.log(`✏️  Modified ${terminalStyles.cyan(projectPackageJsonPath)}`);
+    console.log(
+      `✏️  Modified ${terminalStyles.highlight(projectPackageJsonPath)}`,
+    );
   }
 
   const generatedConfig = generateConfigFile(results);
@@ -121,6 +123,8 @@ export default async (rootDir: string = realpath(process.cwd())) => {
 
   console.log('');
   console.log(
-    `📝  Configuration file created at ${terminalStyles.cyan(jestConfigPath)}`,
+    `📝  Configuration file created at ${terminalStyles.highlight(
+      jestConfigPath,
+    )}`,
   );
 };

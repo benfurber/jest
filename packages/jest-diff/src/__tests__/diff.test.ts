@@ -780,9 +780,9 @@ describe('options 7980', () => {
 
   const options = {
     aAnnotation: 'Original',
-    aColor: terminalStyles.red,
+    aColor: terminalStyles.error,
     bAnnotation: 'Modified',
-    bColor: terminalStyles.green,
+    bColor: terminalStyles.success,
   };
 
   test('diff', () => {
@@ -921,7 +921,7 @@ describe('options', () => {
 
     test('diffDefault yellowish common', () => {
       const options = {
-        commonLineTrailingSpaceColor: terminalStyles.bgYellow,
+        commonLineTrailingSpaceColor: terminalStyles.warnBanner,
       };
 
       expect(diff(aTrailingSpaces, bTrailingSpaces, options)).toMatchSnapshot();

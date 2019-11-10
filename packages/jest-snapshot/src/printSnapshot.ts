@@ -149,8 +149,8 @@ export const printDiffOrStringified = (
     aColor,
     bAnnotation,
     bColor,
-    changeLineTrailingSpaceColor: terminalStyles.bgYellow,
-    commonLineTrailingSpaceColor: terminalStyles.bgYellow,
+    changeLineTrailingSpaceColor: terminalStyles.warnBanner,
+    commonLineTrailingSpaceColor: terminalStyles.warnBanner,
     emptyFirstOrLastLinePlaceholder: '↵', // U+21B5
     expand,
     includeChangeCounts: true,

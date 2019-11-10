@@ -14,13 +14,13 @@ import {formatTestPath} from './utils';
 const ARROW = ' \u203A ';
 const DOWN_ARROW = ' \u21B3 ';
 const DOT = ' \u2022 ';
-const FAIL_COLOR = terminalStyles.bold.red;
-const OBSOLETE_COLOR = terminalStyles.bold.yellow;
-const SNAPSHOT_ADDED = terminalStyles.bold.green;
+const FAIL_COLOR = terminalStyles.errorBold;
+const OBSOLETE_COLOR = terminalStyles.warnBold;
+const SNAPSHOT_ADDED = terminalStyles.successBold;
 const SNAPSHOT_NOTE = terminalStyles.dim;
-const SNAPSHOT_REMOVED = terminalStyles.bold.green;
+const SNAPSHOT_REMOVED = terminalStyles.successBold;
 const SNAPSHOT_SUMMARY = terminalStyles.bold;
-const SNAPSHOT_UPDATED = terminalStyles.bold.green;
+const SNAPSHOT_UPDATED = terminalStyles.successBold;
 
 export default (
   snapshots: SnapshotSummary,

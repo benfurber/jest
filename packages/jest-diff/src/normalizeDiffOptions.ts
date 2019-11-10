@@ -15,10 +15,10 @@ const DIFF_CONTEXT_DEFAULT = 5;
 
 const OPTIONS_DEFAULT: DiffOptionsNormalized = {
   aAnnotation: 'Expected',
-  aColor: terminalStyles.green,
+  aColor: terminalStyles.success,
   aIndicator: '-',
   bAnnotation: 'Received',
-  bColor: terminalStyles.red,
+  bColor: terminalStyles.error,
   bIndicator: '+',
   changeColor: terminalStyles.inverse,
   changeLineTrailingSpaceColor: noColor,
@@ -30,7 +30,7 @@ const OPTIONS_DEFAULT: DiffOptionsNormalized = {
   expand: true,
   includeChangeCounts: false,
   omitAnnotationLines: false,
-  patchColor: terminalStyles.yellow,
+  patchColor: terminalStyles.warn,
 };
 
 const getContextLines = (contextLines?: number): number =>

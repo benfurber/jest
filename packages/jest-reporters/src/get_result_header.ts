@@ -11,7 +11,7 @@ import {terminalStyles} from '@jest/styles';
 import {formatTestPath, printDisplayName} from './utils';
 import terminalLink = require('terminal-link');
 
-const LONG_TEST_COLOR = terminalStyles.reset.bold.bgRed;
+const LONG_TEST_COLOR = terminalStyles.errorBanner;
 // Explicitly reset for these messages since they can get written out in the
 // middle of error logging
 const FAIL_TEXT = 'FAIL';

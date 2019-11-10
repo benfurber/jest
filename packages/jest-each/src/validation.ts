@@ -12,8 +12,8 @@ import {Global} from '@jest/types';
 
 type TemplateData = Global.TemplateData;
 
-const EXPECTED_COLOR = terminalStyles.green;
-const RECEIVED_COLOR = terminalStyles.red;
+const EXPECTED_COLOR = terminalStyles.success;
+const RECEIVED_COLOR = terminalStyles.error;
 
 export const validateArrayTable = (table: any) => {
   if (!Array.isArray(table)) {

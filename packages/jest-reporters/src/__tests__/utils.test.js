@@ -13,7 +13,7 @@ import {printDisplayName, trimAndFormatPath, wrapAnsiString} from '../utils';
 describe('wrapAnsiString()', () => {
   it('wraps a long string containing ansi chars', () => {
     const string =
-      `abcde ${terminalStyles.red.bold('red-bold')} 1234456` +
+      `abcde ${terminalStyles.errorBold('red-bold')} 1234456` +
       `${terminalStyles.dim('bcd')} ` +
       `123ttttttththththththththththththththththththththth` +
       `tetetetetettetetetetetetetete${terminalStyles.underline.bold(

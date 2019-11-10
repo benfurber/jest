@@ -364,10 +364,10 @@ For other applications, you can provide an options object as a third argument:
 | name                              | default                  |
 | :-------------------------------- | :----------------------- |
 | `aAnnotation`                     | `'Expected'`             |
-| `aColor`                          | `terminalStyles.green`   |
+| `aColor`                          | `terminalStyles.success` |
 | `aIndicator`                      | `'-'`                    |
 | `bAnnotation`                     | `'Received'`             |
-| `bColor`                          | `terminalStyles.red`     |
+| `bColor`                          | `terminalStyles.error`   |
 | `bIndicator`                      | `'+'`                    |
 | `changeColor`                     | `terminalStyles.inverse` |
 | `changeLineTrailingSpaceColor`    | `string => string`       |
@@ -379,7 +379,7 @@ For other applications, you can provide an options object as a third argument:
 | `expand`                          | `true`                   |
 | `includeChangeCounts`             | `false`                  |
 | `omitAnnotationLines`             | `false`                  |
-| `patchColor`                      | `terminalStyles.yellow`  |
+| `patchColor`                      | `terminalStyles.warn`    |
 
 For more information about the options, see the following examples.
 
@@ -413,8 +413,8 @@ For consistency with most diff tools, you might exchange the colors:
 import {terminalStyles} from '@jest/styles';
 
 const options = {
-  aColor: terminalStyles.red,
-  bColor: terminalStyles.green,
+  aColor: terminalStyles.error,
+  bColor: terminalStyles.success,
 };
 ```
 

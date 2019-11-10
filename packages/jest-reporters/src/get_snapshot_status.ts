@@ -11,10 +11,10 @@ import {pluralize} from 'jest-util';
 
 const ARROW = ' \u203A ';
 const DOT = ' \u2022 ';
-const FAIL_COLOR = terminalStyles.bold.red;
-const SNAPSHOT_ADDED = terminalStyles.bold.green;
-const SNAPSHOT_UPDATED = terminalStyles.bold.green;
-const SNAPSHOT_OUTDATED = terminalStyles.bold.yellow;
+const FAIL_COLOR = terminalStyles.errorBold;
+const SNAPSHOT_ADDED = terminalStyles.successBold;
+const SNAPSHOT_UPDATED = terminalStyles.successBold;
+const SNAPSHOT_OUTDATED = terminalStyles.warnBold;
 
 export default (
   snapshot: TestResult['snapshot'],

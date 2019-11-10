@@ -51,8 +51,8 @@ export type MatcherHintOptions = {
 
 export type DiffOptions = ImportDiffOptions;
 
-export const EXPECTED_COLOR: any = terminalStyles.green;
-export const RECEIVED_COLOR: any = terminalStyles.red;
+export const EXPECTED_COLOR: any = terminalStyles.success;
+export const RECEIVED_COLOR: any = terminalStyles.error;
 export const INVERTED_COLOR: any = terminalStyles.inverse;
 export const BOLD_WEIGHT: any = terminalStyles.bold;
 export const DIM_COLOR: any = terminalStyles.dim;
@@ -324,8 +324,8 @@ export const printDiffOrStringify = (
       return diffStringsUnified(expected, received, {
         aAnnotation: expectedLabel,
         bAnnotation: receivedLabel,
-        changeLineTrailingSpaceColor: terminalStyles.bgYellow,
-        commonLineTrailingSpaceColor: terminalStyles.bgYellow,
+        changeLineTrailingSpaceColor: terminalStyles.warnBanner,
+        commonLineTrailingSpaceColor: terminalStyles.warnBanner,
         emptyFirstOrLastLinePlaceholder: '↵', // U+21B5
         expand,
         includeChangeCounts: true,

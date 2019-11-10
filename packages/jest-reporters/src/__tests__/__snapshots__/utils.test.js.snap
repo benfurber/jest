@@ -21,7 +21,7 @@ exports[`wrapAnsiString() returns the string unaltered if given a terminal width
 exports[`wrapAnsiString() returns the string unaltered if given a terminal width of zero 2`] = `"This string shouldn't cause you any trouble"`;
 
 exports[`wrapAnsiString() wraps a long string containing ansi chars 1`] = `
-"abcde <red><bold>red-
+"abcde <bold><red>red-
 bold</></> 12344
 56<dim>bcd</> 123t
 tttttththt

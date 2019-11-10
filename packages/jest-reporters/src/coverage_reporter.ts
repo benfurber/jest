@@ -20,7 +20,7 @@ import {RawSourceMap} from 'source-map';
 import BaseReporter from './base_reporter';
 import {Context, CoverageReporterOptions, CoverageWorker, Test} from './types';
 
-const FAIL_COLOR = terminalStyles.bold.red;
+const FAIL_COLOR = terminalStyles.errorBold;
 const RUNNING_TEST_COLOR = terminalStyles.bold.dim;
 
 export default class CoverageReporter extends BaseReporter {

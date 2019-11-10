@@ -29,7 +29,7 @@ ${DOT}If you simply want to mock your non-JS modules (e.g. binary assets) you ca
     )} config option.
 
 You'll find more details and examples of these config options in the docs:
-${terminalStyles.cyan('https://jestjs.io/docs/en/configuration.html')}
+${terminalStyles.highlight('https://jestjs.io/docs/en/configuration.html')}
 
 ${terminalStyles.errorBold('Details:')}
 

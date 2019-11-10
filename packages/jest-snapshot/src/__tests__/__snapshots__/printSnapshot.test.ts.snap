@@ -420,8 +420,8 @@ exports[`printDiffOrStringified multi line small changes 1`] = `
 <g>- Snapshot  - 7</>
 <r>+ Received  + 7</>
 
-<g>-     6<i>9</i> |<Y> </></>
-<r>+     6<i>8</i> |<Y> </></>
+<g>-     6<i>9</i> |[0m<i><b><y> </><g></></i>[0m</>
+<r>+     6<i>8</i> |[0m<i><b><y> </><r></></i>[0m</>
 <g>-     <i>70</i> | test('assert.doesNotThrow', () => {</>
 <r>+     <i>69</i> | test('assert.doesNotThrow', () => {</>
 <g>-   > 7<i>1</i> |   assert.doesNotThrow(() => {</>

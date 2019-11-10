@@ -219,7 +219,7 @@ const formatPaths = (
       micromatch([filePath], config.testMatch).length > 0) ||
     filePath === relativeTestPath
   ) {
-    filePath = terminalStyles.reset.cyan(filePath);
+    filePath = terminalStyles.highlight(filePath);
   }
   return STACK_TRACE_COLOR(match[1]) + filePath + STACK_TRACE_COLOR(match[3]);
 };
