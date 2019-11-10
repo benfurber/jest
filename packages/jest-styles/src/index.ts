@@ -6,10 +6,10 @@
  */
 
 import {TerminalStyles} from './terminalStylings';
-import {setLevel} from './stylingSettings';
+import {setSettings} from './stylingSettings';
 import {settingsType} from './types';
 
-const settings: settingsType = setLevel();
+const settings: settingsType = setSettings();
 const terminalStyles = new TerminalStyles(settings);
 
 export {terminalStyles};
