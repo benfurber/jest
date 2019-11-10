@@ -71,6 +71,13 @@ describe('terminalStyles', () => {
 
       expect(call).toEqual(expectation);
     });
+
+    it('calls warnBanner() correctly', () => {
+      const call = terminalStyles.warnBanner(`Running`);
+      const expectation = chalkInstance.reset.inverse.bold.yellow(`Running`);
+
+      expect(call).toEqual(expectation);
+    });
   });
 
   describe('when terminal level is set to 0', () => {
@@ -139,6 +146,13 @@ describe('terminalStyles', () => {
     it('calls warnBold() correctly', () => {
       const call = terminalStyles.warnBold(`This is a bold warning`);
       const expectation = chalkInstance.bold.yellow(`This is a bold warning`);
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls warnBanner() correctly', () => {
+      const call = terminalStyles.warnBanner(`Running`);
+      const expectation = chalkInstance.reset.inverse.bold.yellow(`Running`);
 
       expect(call).toEqual(expectation);
     });

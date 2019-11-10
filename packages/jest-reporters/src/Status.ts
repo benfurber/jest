@@ -18,7 +18,7 @@ import {
 } from './utils';
 
 const RUNNING_TEXT = ' RUNS ';
-const RUNNING = terminalStyles.reset.inverse.yellow.bold(RUNNING_TEXT) + ' ';
+const RUNNING = terminalStyles.warnBanner(RUNNING_TEXT) + ' ';
 
 /**
  * This class is a perf optimization for sorting the list of currently
