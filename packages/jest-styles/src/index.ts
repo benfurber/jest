@@ -5,4 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export {default as terminalStyles} from './terminalStylings';
+import {TerminalStyles} from './terminalStylings';
+import {setLevel} from './setLevel';
+
+const level = setLevel();
+const terminalStyles = new TerminalStyles({level});
+
+export {terminalStyles};

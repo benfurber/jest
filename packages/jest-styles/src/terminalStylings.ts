@@ -50,21 +50,6 @@ export class TerminalStyles extends chalk.Instance {
     this.chalk.reset.inverse.bold[this.colors.warn](string);
 }
 
-function setLevel() {
-  const config = require('../../../jest.config');
-  const styleTerminalOption = config.styleTerminal;
-
-  if (styleTerminalOption === false && styleTerminalOption !== undefined) {
-    return 0;
-  }
-
-  const defaultOption = stdout === false ? 0 : stdout.level;
-  return defaultOption;
-}
-
-const level = setLevel();
-const terminalStyles = new TerminalStyles({level});
-
 // Duplication of chalk's private color types.
 declare type color =
   | 'black'
@@ -85,5 +70,3 @@ declare type color =
   | 'magentaBright'
   | 'cyanBright'
   | 'whiteBright';
-
-export default terminalStyles;
