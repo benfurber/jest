@@ -37,6 +37,13 @@ describe('terminalStyles', () => {
       expect(call).toEqual(expectation);
     });
 
+    it('calls message() correctly', () => {
+      const call = terminalStyles.message(`Note this.`);
+      const expectation = chalkInstance.magenta(`Note this.`);
+
+      expect(call).toEqual(expectation);
+    });
+
     it('calls success() correctly', () => {
       const call = terminalStyles.success(`Successful`);
       const expectation = chalkInstance.green(`Successful`);
@@ -111,6 +118,13 @@ describe('terminalStyles', () => {
       const expectation = chalkInstance.reset.inverse.bold.red(
         `There's a very big problem`,
       );
+
+      expect(call).toEqual(expectation);
+    });
+
+    it('calls message() correctly', () => {
+      const call = terminalStyles.message(`Note this.`);
+      const expectation = chalkInstance.magenta(`Note this.`);
 
       expect(call).toEqual(expectation);
     });

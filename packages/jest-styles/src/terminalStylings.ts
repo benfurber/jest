@@ -10,12 +10,14 @@ interface args {
 
 interface colors {
   error: Config.DisplayNameColor;
+  message: Config.DisplayNameColor;
   success: Config.DisplayNameColor;
   warn: Config.DisplayNameColor;
 }
 
 const defaultColors: colors = {
   error: 'red',
+  message: 'magenta',
   success: 'green',
   warn: 'yellow',
 };
@@ -38,6 +40,8 @@ export class TerminalStyles extends chalk.Instance {
   errorBold = (string: string) => this.chalk.bold[this.colors.error](string);
   errorBanner = (string: string) =>
     this.chalk.reset.inverse.bold[this.colors.error](string);
+
+  message = (string: string) => this.chalk[this.colors.message](string);
 
   success = (string: string) => this.chalk[this.colors.success](string);
   successBold = (string: string) =>
