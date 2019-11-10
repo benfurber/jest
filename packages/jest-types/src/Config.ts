@@ -82,7 +82,7 @@ export type DefaultOptions = {
   setupFilesAfterEnv: Array<Path>;
   skipFilter: boolean;
   snapshotSerializers: Array<Path>;
-  styleTerminal: boolean;
+  styleTerminal: boolean | terminalColors;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
   testFailureExitCode: string | number;
@@ -200,7 +200,7 @@ export type InitialOptions = Partial<{
   skipNodeResolution: boolean;
   snapshotResolver: Path;
   snapshotSerializers: Array<Path>;
-  styleTerminal: boolean;
+  styleTerminal: boolean | terminalColors;
   errorOnDeprecated: boolean;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
@@ -350,7 +350,7 @@ export type GlobalConfig = {
   rootDir: Path;
   silent: boolean;
   skipFilter: boolean;
-  styleTerminal: boolean;
+  styleTerminal: boolean | terminalColors;
   errorOnDeprecated: boolean;
   testFailureExitCode: number;
   testNamePattern: string;
@@ -414,7 +414,7 @@ export type ProjectConfig = {
   skipNodeResolution: boolean;
   snapshotResolver: Path | null | undefined;
   snapshotSerializers: Array<Path>;
-  styleTerminal: boolean;
+  styleTerminal: boolean | terminalColors;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, any>;
   testMatch: Array<Glob>;
@@ -493,7 +493,7 @@ export type Argv = Arguments<
     showConfig: boolean;
     silent: boolean;
     snapshotSerializers: Array<string>;
-    styleTerminal: boolean;
+    styleTerminal: boolean | terminalColors;
     testEnvironment: string;
     testFailureExitCode: string | null | undefined;
     testMatch: Array<string>;
