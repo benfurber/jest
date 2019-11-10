@@ -17,11 +17,11 @@ interface colors {
 }
 
 const defaultColors: colors = {
-  error: 'magenta',
+  error: 'red',
   highlight: 'cyan',
   message: 'magenta',
-  success: 'magenta',
-  warn: 'magenta',
+  success: 'green',
+  warn: 'yellow',
 };
 
 export class TerminalStyles extends chalk.Instance {
