@@ -11,7 +11,7 @@
   "types": "build/index.d.ts",
   "dependencies": {
     "@jest/types": "24.9.0",
-    "chalk": "3.0.0-beta.2",
+    "chalk": "^3.0.0",
     "supports-color": "^7.1.0"
   },
   "engines": {
