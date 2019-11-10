@@ -1,22 +1,10 @@
 import chalk = require('chalk');
+import {Config} from '@jest/types';
 import * as chalkTypes from 'chalk';
 import {stdout} from 'supports-color';
-import {Config} from '@jest/types';
+import {levelType, settingsType} from './types';
 
-interface args {
-  colors?: colors;
-  level: chalkTypes.ColorSupport['level'];
-}
-
-interface colors {
-  error: Config.DisplayNameColor;
-  highlight: Config.DisplayNameColor;
-  message: Config.DisplayNameColor;
-  success: Config.DisplayNameColor;
-  warn: Config.DisplayNameColor;
-}
-
-const defaultColors: colors = {
+const defaultColors: Config.terminalColors = {
   error: 'red',
   highlight: 'cyan',
   message: 'magenta',
@@ -25,12 +13,12 @@ const defaultColors: colors = {
 };
 
 export class TerminalStyles extends chalk.Instance {
-  colors: colors;
-  level: chalkTypes.ColorSupport['level'];
+  colors: Config.terminalColors;
+  level: levelType;
   supportsColor: false | chalkTypes.ColorSupport;
   chalk: chalkTypes.Chalk;
 
-  constructor(args: args) {
+  constructor(args: settingsType) {
     super();
     this.colors = args.colors || defaultColors;
     this.level = args.level;

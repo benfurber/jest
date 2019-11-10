@@ -520,3 +520,11 @@ export type Argv = Arguments<
     watchPathIgnorePatterns: Array<string>;
   }>
 >;
+
+export interface terminalColors {
+  error: DisplayNameColor;
+  highlight: DisplayNameColor;
+  message: DisplayNameColor;
+  success: DisplayNameColor;
+  warn: DisplayNameColor;
+}
